@@ -885,7 +885,7 @@
   // en su fila se sigue mostrando el monto real por semana. Servicios (luz+agua)
   // no tiene monto fijo: se deja sin costo pero visible como pendiente de pago.
   const fixedCosts = [
-    {name:"Contador", amount:5850, frequency:"monthly", dueLabel:"se paga el 15 de cada mes"},
+    {name:"Renta", amount:5850, frequency:"monthly", dueLabel:"se paga el 15 de cada mes"},
     {name:"Pago a Mitch", amount:1500, frequency:"weekly", dueLabel:"cada semana"},
     {name:"Pago a Gael", amount:1500, frequency:"weekly", dueLabel:"cada semana"},
     {name:"Internet", amount:400, frequency:"monthly", dueLabel:"se paga el 30 de cada mes"},
@@ -903,7 +903,7 @@
   // lista no se repite sola cada semana, hay que avisarme para adelantar la
   // fecha una vez que ese pago quede marcado como hecho.
   const paymentsSeed = [
-    {id:101, name:"Contador", cat:"Servicios profesionales", amount:5850, due:"2026-09-15"},
+    {id:101, name:"Renta", cat:"Renta", amount:5850, due:"2026-09-15"},
     {id:102, name:"Internet", cat:"Servicios", amount:400, due:"2026-09-30"},
     {id:103, name:"Servicios (luz y agua, juntos)", cat:"Servicios", amount:null, due:"2026-09-30"},
     {id:104, name:"Pago a Mitch", cat:"Nómina", amount:1500, due:"2026-09-11"},
@@ -1167,7 +1167,7 @@
     document.getElementById("kpiVentasSemana").textContent = fmtMoney(weekToDate);
     document.getElementById("kpiCostosMes").textContent = fmtMoney(realSpentForMonth(CURRENT_MONTH_KEY));
 
-    const alerts = ingredients.filter(i => (i.stock/i.full*100) < 50).length;
+    const alerts = liveIngredients().filter(i => (i.stock/i.full*100) < 50).length;
     document.getElementById("kpiAlertas").textContent = alerts;
   }
 
@@ -1238,7 +1238,7 @@
   // ---------- Render: alert list (resumen) ----------
   function renderAlertList(){
     const el = document.getElementById("alertList");
-    const rows = ingredients
+    const rows = liveIngredients()
       .map(i=>({...i, pct:i.stock/i.full*100}))
       .filter(i=>i.pct<50)
       .sort((a,b)=>a.pct-b.pct)
@@ -1252,13 +1252,39 @@
     }).join("") || `<div class="rmeta">Todo bien surtido.</div>`;
   }
 
+  // ---------- Stock en vivo: descuenta lo vendido de verdad desde el último
+  // conteo físico, usando la receta de cada producto y las ventas reales de
+  // Loyverse día por día (no el promedio semanal — el consumo real de cada
+  // día). El número que dicta Enrique (ing.stock) nunca se toca solo; esto
+  // solo calcula "cuánto debería quedar hoy" a partir de ese número. Un
+  // insumo sin receta completa (Whimix Elote Bowl, fruit bowl, nieves, otros
+  // frappés) simplemente no tiene por dónde descontarse y se queda como el
+  // último conteo, igual que antes.
+  const STOCK_BASELINE = "2026-09-08"; // fecha del conteo físico más reciente
+  function realStockNow(ing){
+    let consumed = 0;
+    Object.entries(dailySales).forEach(([day, d]) => {
+      if(day <= STOCK_BASELINE) return; // solo lo vendido DESPUÉS del conteo
+      d.items.forEach(it => {
+        const p = PRODUCT_BY_NAME[it.n.toLowerCase()];
+        if(!p) return;
+        const qty = (recipes[p.id]||{})[ing.id];
+        if(qty) consumed += qty * it.q;
+      });
+    });
+    return Math.max(0, Math.round((ing.stock - consumed)*1000)/1000);
+  }
+  function liveIngredients(){
+    return ingredients.map(i => ({...i, stock: realStockNow(i)}));
+  }
+
   // ---------- Render: resupply table (shared by preview + full view) ----------
   // Regla real de Enrique: compra todos los domingos. Un insumo entra a la
   // lista si, restándole lo que se va a consumir esta semana, va a quedar
   // por debajo del 25% — y cuando lo compra, siempre lo vuelve a dejar al
   // 100% (full), no solo al 25%.
   function computeResupply(){
-    return ingredients.map(i=>{
+    return liveIngredients().map(i=>{
       const extra = eventExtraFor(i.id);
       const weekly = weeklyConsumption(i.id, extra);
       const willDropBelowThreshold = (i.stock - weekly) < REORDER_POINT*i.full;
@@ -1305,7 +1331,7 @@
   // ---------- Render: inventario ----------
   function renderInventario(){
     // los más urgentes primero, para que salgan en los "primeros poquitos" antes de dar Ver más
-    const sorted = ingredients.map(i=>({...i, pct:i.stock/i.full*100})).sort((a,b)=>a.pct-b.pct);
+    const sorted = liveIngredients().map(i=>({...i, pct:i.stock/i.full*100})).sort((a,b)=>a.pct-b.pct);
     const invRowsHtml = sorted.map(i=>{
       const st = statusFor(i.pct);
       const days = daysOfStockNum(i);
@@ -1538,13 +1564,21 @@
 
     const weeklyRev = products.reduce((s,p)=>s+p.price*(weeklySales[p.id]||0),0);
     const weeklyIngredientCost = products.reduce((s,p)=>s+costOf(p)*(weeklySales[p.id]||0),0);
-    const weeklyFixed = fixedMonthly*12/52;
-    const netWeekly = weeklyRev-weeklyIngredientCost-weeklyFixed;
+    // Real, no prorrateado: solo los fijos que ya marcaste "Pagado" en Pagos
+    // y cuyo vencimiento cae en esta semana (lun-hoy) — si no has pagado
+    // nada esta semana, esto es $0.
+    const daysSinceMondayW = (TODAY.getDay()+6)%7;
+    const mondayW = new Date(TODAY.getTime() - daysSinceMondayW*MS_DAY);
+    const weeklyFixedPaid = paymentsSeed
+      .filter(p => p.amount && paidIds.has(p.id))
+      .filter(p => { const d = new Date(p.due+"T00:00:00"); return d>=mondayW && d<=TODAY; })
+      .reduce((s,p)=>s+p.amount, 0);
+    const netWeekly = weeklyRev-weeklyIngredientCost-weeklyFixedPaid;
 
     document.getElementById("weeklySummary").innerHTML = `
       <div class="row"><span class="rtitle">Ingresos</span><span class="rmeta mono">${fmtMoney(weeklyRev)}</span></div>
       <div class="row"><span class="rtitle">Costo de insumos</span><span class="rmeta mono">−${fmtMoney(weeklyIngredientCost)}</span></div>
-      <div class="row"><span class="rtitle">Costos fijos (prorrateado)</span><span class="rmeta mono">−${fmtMoney(weeklyFixed)}</span></div>`;
+      <div class="row"><span class="rtitle">Costos fijos (pagados esta semana)</span><span class="rmeta mono">−${fmtMoney(weeklyFixedPaid)}</span></div>`;
     document.getElementById("netWeekly").textContent = fmtMoney(netWeekly);
   }
 
