@@ -364,7 +364,10 @@
 
   /* mobile */
   @media (max-width: 820px){
-    .app{flex-direction:column; height:auto;}
+    /* min-height (no height:auto a secas) para que una vista corta como
+       Resumen siga llenando toda la pantalla y no deje ver el blanco del
+       fondo antes de llegar a la barra de abajo. */
+    .app{flex-direction:column; height:auto; min-height:100vh; min-height:100dvh;}
     /* La barra lateral se convierte en un menú de pestañas fijo abajo,
        como cualquier app de celular — más fácil de usar con el pulgar. */
     .sidebar{
@@ -439,6 +442,10 @@
         <span class="day" id="todayDay"></span>
         <span class="date" id="todayDate"></span>
       </div>
+      <button class="btn ghost small" id="refreshBtn" type="button" title="Actualizar" aria-label="Actualizar la página">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 11A8 8 0 1 0 6.5 17.5"/><path d="M20 5v6h-6"/></svg>
+        Actualizar
+      </button>
     </div>
 
     <!-- RESUMEN -->
@@ -1582,6 +1589,21 @@
   renderMonthlySpend();
   renderPagos();
   renderEvents();
+
+  // El ícono en pantalla de inicio (modo standalone) a veces se queda con
+  // una copia vieja de la página. Este botón fuerza una recarga real,
+  // pidiendo la página con un parámetro distinto para que no se use nada
+  // guardado en caché — así ya no hace falta borrar y volver a agregar
+  // el ícono cada vez que hay cambios.
+  const refreshBtn = document.getElementById("refreshBtn");
+  if(refreshBtn){
+    refreshBtn.addEventListener("click", () => {
+      refreshBtn.disabled = true;
+      const url = new URL(location.href);
+      url.searchParams.set("r", Date.now().toString());
+      location.replace(url.toString());
+    });
+  }
 })();
 </script>
 </body>
