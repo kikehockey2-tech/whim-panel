@@ -442,6 +442,7 @@
         <span class="day" id="todayDay"></span>
         <span class="date" id="todayDate"></span>
       </div>
+      <div class="sync-status" id="syncBadge" hidden><span class="sync-dot"></span><span id="syncBadgeText"></span></div>
       <button class="btn ghost small" id="refreshBtn" type="button" title="Actualizar" aria-label="Actualizar la página">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 11A8 8 0 1 0 6.5 17.5"/><path d="M20 5v6h-6"/></svg>
         Actualizar
@@ -825,17 +826,17 @@
   // convertido a hora de Monterrey UTC-6 — Loyverse entrega todo en UTC, y sin esa
   // conversión las ventas de la noche se contaban en el día equivocado).
   // Los productos que no aparecen aquí no han tenido ventas registradas todavía.
-  const weeklySales = {
+  let weeklySales = {
     elote_grande:4, elote_mediano:12, whimix_elote:16, whimix_fruit:1, whimix_bowl:.8,
     nieve_grande:.3, nieve_mediana:.3, smoothie_mangonada:3.7, smoothie_limonfresa:2.6,
     smoothie_berries:.8, smoothie_pinacoco:.5, matcha:.3, coca_cola:6, agua_natural:2.6,
   };
   // Hoy (domingo) el local no abre y no hay mercadito agendado para esta fecha.
-  const todaySales = {};
+  let todaySales = {};
   // Ventas reales del local ya con la hora corregida: lun 31-ago a vie 4-sep;
   // sáb 5-sep y hoy domingo el local estuvo cerrado (cero ventas, no hubo mercadito).
-  const trend = [280, 1345, 745, 395, 690, 0, 0]; // Lun..Dom, ingreso real $
-  const trendTags = [null,null,null,null,null,"cerrado","cerrado"];
+  let trend = [280, 1345, 745, 395, 690, 0, 0]; // Lun..Dom, ingreso real $
+  let trendTags = [null,null,null,null,null,"cerrado","cerrado"];
 
   const fixedCosts = [
     {name:"Renta del contenedor", amount:4500},
@@ -874,7 +875,7 @@
 
   // Historial real, día por día, jalado de Loyverse (8 jun – 6 sep) y ya con la
   // hora convertida a Monterrey. Los días que no aparecen aquí no tuvieron ventas.
-  const dailySales = {
+  let dailySales = {
     "2026-06-08":{kind:"local",total:70,items:[{n:"Elote Grande",q:1.0,r:70}]},
     "2026-06-09":{kind:"local",total:85,items:[{n:"Elote Mediano",q:1.0,r:65},{n:"Agua Natural",q:1.0,r:20}]},
     "2026-08-12":{kind:"local",total:125,items:[{n:"Elote Mediano",q:1.0,r:65},{n:"Coca cola",q:2.0,r:60}]},
@@ -1582,21 +1583,58 @@
     document.getElementById("view-"+btn.dataset.view).hidden = false;
   });
 
+  // ---------- Datos en vivo ----------
+  // data.json lo genera solo, cada hora, un robot de GitHub Actions que le
+  // pregunta directo a Loyverse (scripts/sync_loyverse.py). Si por lo que
+  // sea no carga (sin internet, primer segundo antes de que exista el
+  // archivo, etc.), la página sigue funcionando con la última foto que
+  // quedó escrita aquí arriba, para que nunca se vea vacía.
+  async function loadLiveData(){
+    const syncBadge = document.getElementById("syncBadge");
+    const syncBadgeText = document.getElementById("syncBadgeText");
+    try {
+      const res = await fetch("data.json?v=" + Date.now());
+      if(!res.ok) throw new Error("data.json " + res.status);
+      const live = await res.json();
+      if(live.dailySales) dailySales = live.dailySales;
+      if(live.todaySales) todaySales = live.todaySales;
+      if(live.trend) trend = live.trend;
+      if(live.trendTags) trendTags = live.trendTags;
+      if(live.weeklySales) weeklySales = live.weeklySales;
+      if(live.productCost){
+        products.forEach(p => { if(live.productCost[p.id] != null) p.loyCost = live.productCost[p.id]; });
+      }
+      if(syncBadgeText){
+        const when = new Date(live.generated_at).toLocaleString("es-MX",{hour:"numeric",minute:"2-digit",day:"numeric",month:"short"});
+        syncBadgeText.textContent = "Loyverse actualizado " + when;
+      }
+      if(syncBadge) syncBadge.hidden = false;
+    } catch(err){
+      console.warn("No se pudo cargar data.json en vivo, usando la última foto guardada:", err);
+      if(syncBadgeText) syncBadgeText.textContent = "Sin datos en vivo — mostrando la última foto guardada";
+      if(syncBadge) syncBadge.hidden = false;
+    }
+  }
+
   // ---------- Init ----------
-  renderKPIs();
-  renderTrendChart(document.getElementById("trendChartWrap"));
-  renderTrendChart(document.getElementById("trendChartWrap2"));
-  renderAlertList();
-  renderResupplyPreview();
-  renderResupplyFull();
-  renderInventario();
-  renderVentas();
-  renderDailyHistory();
-  renderMonthlySales();
-  renderCostos();
-  renderMonthlySpend();
-  renderPagos();
-  renderEvents();
+  async function initApp(){
+    await loadLiveData();
+    renderKPIs();
+    renderTrendChart(document.getElementById("trendChartWrap"));
+    renderTrendChart(document.getElementById("trendChartWrap2"));
+    renderAlertList();
+    renderResupplyPreview();
+    renderResupplyFull();
+    renderInventario();
+    renderVentas();
+    renderDailyHistory();
+    renderMonthlySales();
+    renderCostos();
+    renderMonthlySpend();
+    renderPagos();
+    renderEvents();
+  }
+  initApp();
 
   // El ícono en pantalla de inicio (modo standalone) a veces se queda con
   // una copia vieja de la página. Este botón fuerza una recarga real,

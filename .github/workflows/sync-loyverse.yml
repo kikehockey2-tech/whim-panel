@@ -1,0 +1,38 @@
+name: Sincronizar ventas de Loyverse
+
+on:
+  schedule:
+    # Cada hora, en el minuto 5 (para no pegarle justo a la hora en punto,
+    # cuando GitHub tiene más carga y a veces retrasa las corridas).
+    - cron: "5 * * * *"
+  workflow_dispatch: {}  # también se puede correr a mano desde GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Jalar ventas reales de Loyverse
+        env:
+          LOYVERSE_TOKEN: ${{ secrets.LOYVERSE_TOKEN }}
+        run: python3 scripts/sync_loyverse.py
+
+      - name: Subir data.json si cambió
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "Sin cambios en las ventas, no hay nada que subir."
+            exit 0
+          fi
+          git config user.name "whim-sync-bot"
+          git config user.email "actions@github.com"
+          git add data.json
+          git commit -m "Actualiza ventas reales de Loyverse ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git push

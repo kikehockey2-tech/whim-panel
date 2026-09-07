@@ -1,0 +1,698 @@
+{
+ "generated_at": "2026-09-07T16:35:56.928159+00:00",
+ "today_local": "2026-09-07",
+ "dailySales": {
+  "2026-06-08": {
+   "kind": "local",
+   "total": 70,
+   "items": [
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-06-09": {
+   "kind": "local",
+   "total": 85,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
+  },
+  "2026-08-12": {
+   "kind": "local",
+   "total": 125,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
+    }
+   ]
+  },
+  "2026-08-13": {
+   "kind": "local",
+   "total": 200,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-08-17": {
+   "kind": "local",
+   "total": 860,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 5,
+     "r": 425
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 3,
+     "r": 195
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Coca cola",
+     "q": 1,
+     "r": 30
+    }
+   ]
+  },
+  "2026-08-18": {
+   "kind": "local",
+   "total": 615,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 4,
+     "r": 340
+    },
+    {
+     "n": "Matcha",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    }
+   ]
+  },
+  "2026-08-19": {
+   "kind": "local",
+   "total": 375,
+   "items": [
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Coca cola",
+     "q": 1,
+     "r": 30
+    }
+   ]
+  },
+  "2026-08-20": {
+   "kind": "local",
+   "total": 960,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 5,
+     "r": 425
+    },
+    {
+     "n": "Smoothie Berries",
+     "q": 2,
+     "r": 150
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 2,
+     "r": 145
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
+    },
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Agua Natural",
+     "q": 2,
+     "r": 40
+    }
+   ]
+  },
+  "2026-08-21": {
+   "kind": "local",
+   "total": 915,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 5,
+     "r": 425
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 3,
+     "r": 195
+    },
+    {
+     "n": "Smoothie Berries",
+     "q": 1,
+     "r": 75
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Whimix Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
+  },
+  "2026-08-24": {
+   "kind": "local",
+   "total": 1220,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 8,
+     "r": 520
+    },
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 4,
+     "r": 340
+    },
+    {
+     "n": "Smoothie Piñacoco",
+     "q": 2,
+     "r": 150
+    },
+    {
+     "n": "Whimix Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-08-25": {
+   "kind": "local",
+   "total": 1145,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 8,
+     "r": 680
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 75
+    },
+    {
+     "n": "Nieve mediana",
+     "q": 1,
+     "r": 60
+    },
+    {
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
+    }
+   ]
+  },
+  "2026-08-26": {
+   "kind": "local",
+   "total": 905,
+   "items": [
+    {
+     "n": "Elote Grande",
+     "q": 4,
+     "r": 280
+    },
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 2,
+     "r": 170
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Coca cola",
+     "q": 3,
+     "r": 90
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
+  },
+  "2026-08-27": {
+   "kind": "local",
+   "total": 1030,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 7,
+     "r": 595
+    },
+    {
+     "n": "Elote Grande",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Coca cola",
+     "q": 3,
+     "r": 90
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    }
+   ]
+  },
+  "2026-08-28": {
+   "kind": "local",
+   "total": 815,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 4,
+     "r": 260
+    },
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 3,
+     "r": 255
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Coca cola",
+     "q": 3,
+     "r": 90
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-08-29": {
+   "kind": "mercadito",
+   "total": 11400,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 43,
+     "r": 3655
+    },
+    {
+     "n": "Agua Natural",
+     "q": 37,
+     "r": 3330
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 23,
+     "r": 1610
+    },
+    {
+     "n": "Elote Grande",
+     "q": 17,
+     "r": 1190
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 17,
+     "r": 1105
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 6,
+     "r": 420
+    },
+    {
+     "n": "Aguas Frescas",
+     "q": 1,
+     "r": 90
+    }
+   ]
+  },
+  "2026-08-30": {
+   "kind": "mercadito",
+   "total": 21630,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 82,
+     "r": 6970
+    },
+    {
+     "n": "Agua Natural",
+     "q": 75,
+     "r": 6930
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 39,
+     "r": 2750
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 40,
+     "r": 2600
+    },
+    {
+     "n": "Elote Grande",
+     "q": 18,
+     "r": 1260
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 16,
+     "r": 1120
+    }
+   ]
+  },
+  "2026-08-31": {
+   "kind": "local",
+   "total": 280,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 1,
+     "r": 85
+    },
+    {
+     "n": "nieve grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Agua Natural",
+     "q": 2,
+     "r": 30
+    },
+    {
+     "n": "Coca cola",
+     "q": 1,
+     "r": 30
+    }
+   ]
+  },
+  "2026-09-01": {
+   "kind": "local",
+   "total": 1345,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 7,
+     "r": 595
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 6,
+     "r": 390
+    },
+    {
+     "n": "Coca cola",
+     "q": 5,
+     "r": 150
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-09-02": {
+   "kind": "local",
+   "total": 745,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 4,
+     "r": 340
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 3,
+     "r": 195
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 1,
+     "r": 70
+    }
+   ]
+  },
+  "2026-09-03": {
+   "kind": "local",
+   "total": 395,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
+    },
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 1,
+     "r": 85
+    },
+    {
+     "n": "Whimix Bowl",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Agua Natural",
+     "q": 2,
+     "r": 40
+    }
+   ]
+  },
+  "2026-09-04": {
+   "kind": "local",
+   "total": 690,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 4,
+     "r": 340
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 4,
+     "r": 260
+    },
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
+  }
+ },
+ "todaySales": {},
+ "trend": [
+  1345,
+  745,
+  395,
+  690,
+  0,
+  0,
+  0
+ ],
+ "trendTags": [
+  null,
+  null,
+  null,
+  null,
+  "cerrado",
+  "cerrado",
+  null
+ ],
+ "weeklySales": {
+  "whimix_elote": 17.6,
+  "elote_mediano": 13.2,
+  "elote_grande": 4.1,
+  "agua_natural": 2.6,
+  "whimix_bowl": 0.9,
+  "smoothie_mangonada": 4.1,
+  "smoothie_limonfresa": 2.9,
+  "coca_cola": 6.8,
+  "nieve_grande": 0.3,
+  "whimix_fruit": 1.2,
+  "nieve_mediana": 0.3,
+  "smoothie_pinacoco": 0.6,
+  "smoothie_berries": 0.9,
+  "matcha": 0.3
+ },
+ "productCost": {
+  "nieve_grande": 0.0,
+  "nieve_mediana": 0.0,
+  "brownie": 0.0,
+  "galleta": 0.0,
+  "smoothie_pinacoco": 0.0,
+  "smoothie_berries": 0.0,
+  "para_llevar": 45.0,
+  "agua_natural": 8.0,
+  "powerade": 22.0,
+  "coca_cola": 18.0,
+  "aguas_frescas": 0.0,
+  "matcha": 30.0,
+  "smoothie_mangonada": 0.0,
+  "smoothie_limonfresa": 18.0,
+  "whimix_fruit": 20.0,
+  "whimix_elote": 32.0,
+  "elote_grande": 22.0,
+  "elote_mediano": 18.0,
+  "whimix_bowl": 22.0
+ }
+}
