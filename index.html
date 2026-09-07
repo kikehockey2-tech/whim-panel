@@ -1112,7 +1112,11 @@
               <text x="${padL-8}" y="${gy+4}" text-anchor="end" font-size="10" fill="var(--ink-muted)" font-family="IBM Plex Mono, monospace">${val>=1000? (val/1000).toFixed(1)+"k": val}</text>`;
     }).join("");
 
-    const days = ["Lun","Mar","Mié","Jue","Vie","Sáb","Hoy"];
+    // Antes esto era una lista fija ("Lun".."Sáb","Hoy") pensada solo para la
+    // foto congelada de un domingo — con la fecha real avanzando cada día,
+    // hay que calcular la etiqueta de cada barra a partir de su fecha real.
+    const DOW_SHORT = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+    const days = trend.map((_,i) => i === trend.length-1 ? "Hoy" : DOW_SHORT[new Date(TODAY.getTime() - (trend.length-1-i)*MS_DAY).getDay()]);
     const dayLabels = pts.map((p,i)=> `<text x="${p[0]}" y="${h-6}" text-anchor="middle" font-size="10.5" fill="var(--ink-muted)">${days[i]}</text>
       ${trendTags[i] ? `<text x="${p[0]}" y="${h+9}" text-anchor="middle" font-size="8.5" fill="var(--accent-strong)" font-family="Archivo Black, sans-serif" letter-spacing="0.03em">${trendTags[i].toUpperCase()}</text>` : ""}`).join("");
 
