@@ -707,10 +707,12 @@
 (function(){
   "use strict";
 
-  // ---------- "Today" — kept fixed so the demo snapshot stays consistent with the
-  // Loyverse pull done on 6 sep 2026. Once the hourly sync job is running, this
-  // becomes `new Date()`. ----------
-  const TODAY = new Date(2026,8,6); // 6 sep 2026, domingo
+  // ---------- "Today" — la fecha real del calendario, siempre. Las ventas
+  // reales solo llegan hasta donde Enrique me las haya dado (jaladas de
+  // Loyverse el 6 sep 2026, o lo que se agregue después a mano); los días
+  // más allá de eso simplemente no tienen ventas registradas todavía. ----------
+  const TODAY = new Date();
+  TODAY.setHours(0,0,0,0);
   const MS_DAY = 86400000;
   const fmtMoney = n => n==null ? "-" : "$" + n.toLocaleString("es-MX",{minimumFractionDigits:0,maximumFractionDigits:0});
   const fmtMoney2 = n => n==null ? "-" : "$" + n.toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -1068,6 +1070,12 @@
       if(heroEyebrow) heroEyebrow.textContent = "Local cerrado hoy";
       document.getElementById("kpiVentasHoy").textContent = "$0";
       document.getElementById("kpiVentasHoySub").textContent = "No abrimos sábados y domingos — hoy es tu día de Resupply";
+    } else if(Object.keys(todaySales).length === 0){
+      // Día abierto, pero todavía no me has pasado las ventas de hoy —
+      // distinto de "vendiste $0", que sería un cierre real.
+      if(heroEyebrow) heroEyebrow.textContent = "Hoy";
+      document.getElementById("kpiVentasHoy").textContent = "-";
+      document.getElementById("kpiVentasHoySub").textContent = "Aún no me pasas las ventas de hoy";
     } else {
       if(heroEyebrow) heroEyebrow.textContent = "Hoy se vendió";
       document.getElementById("kpiVentasHoy").textContent = fmtMoney(revToday);
