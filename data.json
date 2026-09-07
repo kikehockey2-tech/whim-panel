@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-07T17:12:29.777567+00:00",
+ "generated_at": "2026-09-07T18:15:41.164347+00:00",
  "today_local": "2026-09-07",
  "dailySales": {
   "2026-06-08": {
@@ -637,9 +637,22 @@
      "r": 20
     }
    ]
+  },
+  "2026-09-07": {
+   "kind": "local",
+   "total": 70,
+   "items": [
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "elote_grande": 1
+ },
  "trend": [
   1345,
   745,
@@ -647,7 +660,7 @@
   690,
   0,
   0,
-  0
+  70
  ],
  "trendTags": [
   null,
