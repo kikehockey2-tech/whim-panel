@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-07T22:13:22.615553+00:00",
+ "generated_at": "2026-09-07T23:13:23.282402+00:00",
  "today_local": "2026-09-07",
  "dailySales": {
   "2026-06-08": {
@@ -640,12 +640,12 @@
   },
   "2026-09-07": {
    "kind": "local",
-   "total": 255,
+   "total": 575,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 1,
-     "r": 85
+     "q": 4,
+     "r": 340
     },
     {
      "n": "Whimix Fruit Bowl",
@@ -658,6 +658,11 @@
      "r": 70
     },
     {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
      "n": "Coca cola",
      "q": 1,
      "r": 30
@@ -666,7 +671,8 @@
   }
  },
  "todaySales": {
-  "whimix_elote": 1,
+  "elote_mediano": 1,
+  "whimix_elote": 4,
   "coca_cola": 1,
   "whimix_fruit": 1,
   "elote_grande": 1
@@ -678,7 +684,7 @@
   690,
   0,
   0,
-  255
+  575
  ],
  "trendTags": [
   null,
