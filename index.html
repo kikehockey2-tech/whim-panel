@@ -1693,6 +1693,14 @@
   }
   initApp();
 
+  // No basta con jalar data.json una sola vez al abrir: si dejas la página o
+  // la app abierta un rato, antes se quedaba con esa foto vieja. Aquí la
+  // vuelve a jalar sola cada 5 minutos mientras esté visible, y también en
+  // cuanto la vuelves a abrir después de tenerla en segundo plano.
+  const LIVE_REFRESH_MS = 5*60*1000;
+  setInterval(() => { if(!document.hidden) initApp(); }, LIVE_REFRESH_MS);
+  document.addEventListener("visibilitychange", () => { if(!document.hidden) initApp(); });
+
   // El ícono en pantalla de inicio (modo standalone) a veces se queda con
   // una copia vieja de la página. Este botón fuerza una recarga real,
   // pidiendo la página con un parámetro distinto para que no se use nada
