@@ -465,7 +465,7 @@
               <span class="stub-note">lun-dom, esta semana</span>
             </div>
             <div class="stub-tag">
-              <span class="stub-label">Costos del mes</span>
+              <span class="stub-label">Costos fijos del mes</span>
               <span class="stub-value" id="kpiCostosMes">—</span>
               <span class="stub-note" id="kpiCostosMesSub"></span>
             </div>
@@ -1133,11 +1133,24 @@
       document.getElementById("kpiVentasHoy").textContent = fmtMoney(revToday);
       document.getElementById("kpiVentasHoySub").textContent = Object.values(todaySales).reduce((a,b)=>a+b,0)+" productos vendidos";
     }
-    document.getElementById("kpiVentasSemana").textContent = fmtMoney(trend.reduce((a,b)=>a+b,0));
+    // "Ventas semanales" es desde el lunes de ESTA semana hasta hoy — no los
+    // últimos 7 días corridos (eso, si hoy es lunes, mayormente son ventas de
+    // la semana pasada, que es justo lo que se veía "trabado").
+    const daysSinceMonday = (TODAY.getDay()+6)%7; // lunes=0 ... domingo=6
+    const monday = new Date(TODAY.getTime() - daysSinceMonday*MS_DAY);
+    let weekToDate = 0;
+    for(let d=new Date(monday); d<=TODAY; d=new Date(d.getTime()+MS_DAY)){
+      weekToDate += (dailySales[d.toISOString().slice(0,10)]||{}).total || 0;
+    }
+    document.getElementById("kpiVentasSemana").textContent = fmtMoney(weekToDate);
 
+    // "Costos del mes" es solo lo real y fijo (renta, sueldos, internet)
+    // prorrateado a hoy — no un estimado de insumos calculado de las ventas,
+    // que se veía como "gasto" aunque no hayas comprado nada este mes. El
+    // desglose completo (fijos + insumos reales) sigue en la pestaña Costos.
     const monthSpend = spendForMonth(CURRENT_MONTH_KEY);
-    document.getElementById("kpiCostosMes").textContent = fmtMoney(monthSpend.total);
-    document.getElementById("kpiCostosMesSub").textContent = `día ${monthSpend.daysElapsed} de ${monthSpend.daysInMonth} · fijos + insumos`;
+    document.getElementById("kpiCostosMes").textContent = fmtMoney(monthSpend.fixed);
+    document.getElementById("kpiCostosMesSub").textContent = `día ${monthSpend.daysElapsed} de ${monthSpend.daysInMonth} · solo fijos (renta, sueldos, internet)`;
 
     const alerts = ingredients.filter(i => (i.stock/i.full*100) < 50).length;
     document.getElementById("kpiAlertas").textContent = alerts;
