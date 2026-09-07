@@ -822,7 +822,7 @@
     {id:"nieve_mango", name:"Nieve sabor mango — sin existencia", unit:"bote", stock:0, full:1, cost:null},
     {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy — sin existencia", unit:"bote", stock:0, full:1, cost:null},
     {id:"botanera", name:"Botanera — falta costo", unit:"kg", stock:1.585, full:1.585, cost:null}, // conteo 7-sep: 4 botes en total — 2 con 810g y 775g, 2 ya vacíos
-    {id:"elote_desgranado", name:"Elote desgranado (elotes y Whimix Elote Bowl) — falta cantidad por receta y costo", unit:"kg", stock:8, full:8, cost:null}, // 8 bolsas de 1kg — mismo elote para vasos de elote y para el bowl
+    {id:"elote_desgranado", name:"Elote desgranado — falta cantidad para el Whimix Elote Bowl y el costo", unit:"kg", stock:8, full:8, cost:null}, // 8 bolsas de 1kg. Elote Grande/Mediano ya tienen receta (279g/209g); falta el bowl
     {id:"frappe_cafe", name:"Polvo frappé Café — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_mocha", name:"Polvo frappé Mocha — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_vainilla", name:"Polvo frappé Vainilla — falta costo", unit:"kg", stock:1, full:1, cost:null},
@@ -839,19 +839,19 @@
     {id:"agua_insumo_frappe", name:"Agua para frappés (insumo) — sin existencia", unit:"L", stock:0, full:1, cost:null},
   ];
 
-  // Recetas: solo se meten aquí las cantidades que ya confirmaste. Lo que sigue
-  // pendiente (elote desgranado por receta — cuánto va en cada Elote Grande/Mediano/
-  // Whimix Elote Bowl —, papas de los bowls, fruit bowl, nieves, otros frappés) se
-  // deja sin receta a propósito — así no se descuenta inventario con un número
-  // inventado.
+  // Recetas: solo se meten aquí las cantidades que ya confirmaste. Elote Grande/
+  // Mediano ya tienen su elote_desgranado (calculado por volumen de vaso, 85%
+  // grano). Lo que sigue pendiente (elote del Whimix Elote Bowl, papas de los
+  // bowls, fruit bowl, nieves, otros frappés) se deja sin receta a propósito —
+  // así no se descuenta inventario con un número inventado.
   const CAPITA_KG = 0.02;      // 1 "capita" de mayonesa/crema ≈ 20g (estimado, confírmalo)
   const CUCHARADA_KG = 0.015;  // 1 cucharada de queso ≈ 15g (estimado, confírmalo)
   const VASO_HIELO_KG = 0.3;   // "1 vaso de hielo" ≈ 300g (estimado, confírmalo)
   const recipes = {
-    elote_grande: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_16oz:1, cuchara:1},
-    elote_mediano: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_12oz:1, cuchara:1},
+    elote_grande: {elote_desgranado:0.279, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_16oz:1, cuchara:1}, // 279g = vaso 16oz al 85% de puro grano (0.693 g/mL)
+    elote_mediano: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_12oz:1, cuchara:1}, // 209g = vaso 12oz al 85% de puro grano
     // mismas cantidades de mayo/crema/queso que el elote — falta la cantidad de elote y de papa
-    whimix_elote: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
+    whimix_elote: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // falta cuánto elote_desgranado lleva — ¿en qué tamaño de recipiente se sirve?
     whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
     smoothie_cocoa: {hielo:VASO_HIELO_KG, platano:2.5, vasos:1, tapas:1, popotes:1},
     smoothie_mangonada: {hielo:VASO_HIELO_KG, fruta_mango:.15, azucar:.02, chamoy:.01, vasos:1, tapas:1, popotes:1},
