@@ -898,13 +898,16 @@
 
   const REORDER_POINT = 0.25;
 
-  // Pagos reales (8-sep) — mismos costos fijos de arriba. A Mitch y Gael les
-  // falta el día exacto de pago semanal (nomás sé que es "por semana"), así
-  // que no están aquí todavía — se agregan en cuanto Enrique diga qué día.
+  // Pagos reales (8-sep) — mismos costos fijos de arriba. Mitch y Gael cobran
+  // cada viernes: aquí solo se guarda la fecha del PRÓXIMO viernes — como esta
+  // lista no se repite sola cada semana, hay que avisarme para adelantar la
+  // fecha una vez que ese pago quede marcado como hecho.
   const paymentsSeed = [
     {id:101, name:"Contador", cat:"Servicios profesionales", amount:5850, due:"2026-09-15"},
     {id:102, name:"Internet", cat:"Servicios", amount:400, due:"2026-09-30"},
     {id:103, name:"Servicios (luz y agua, juntos)", cat:"Servicios", amount:null, due:"2026-09-30"},
+    {id:104, name:"Pago a Mitch", cat:"Nómina", amount:1500, due:"2026-09-11"},
+    {id:105, name:"Pago a Gael", cat:"Nómina", amount:1500, due:"2026-09-11"},
   ];
   const paymentsHistory = [];
 
