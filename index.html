@@ -769,7 +769,6 @@
   // Stock real que nos diste (bolsas/botellas/piezas contadas) — donde no nos has
   // dado el conteo todavía, se queda como estaba: cifra de ejemplo.
   const ingredients = [
-    {id:"mazorca", name:"Elote (mazorca) — falta cantidad por receta y stock", unit:"pza", stock:0, full:1, cost:5.5},
     {id:"mayonesa", name:"Mayonesa", unit:"kg", stock:3, full:5, cost:58},        // conteo 7-sep: 3 bolsas de 1kg
     {id:"crema", name:"Crema", unit:"kg", stock:10, full:10, cost:32},           // conteo 7-sep: 10 bolsas de 1kg
     {id:"queso_amarillo", name:"Queso amarillo", unit:"kg", stock:3, full:5, cost:150}, // conteo 7-sep: 3 bolsas de 1kg
@@ -823,7 +822,7 @@
     {id:"nieve_mango", name:"Nieve sabor mango — sin existencia", unit:"bote", stock:0, full:1, cost:null},
     {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy — sin existencia", unit:"bote", stock:0, full:1, cost:null},
     {id:"botanera", name:"Botanera — falta costo", unit:"kg", stock:1.585, full:1.585, cost:null}, // conteo 7-sep: 4 botes en total — 2 con 810g y 775g, 2 ya vacíos
-    {id:"elote_desgranado", name:"Elote desgranado (para bowls) — falta costo y receta", unit:"kg", stock:8, full:8, cost:null}, // 8 bolsas de 1kg
+    {id:"elote_desgranado", name:"Elote desgranado (elotes y Whimix Elote Bowl) — falta cantidad por receta y costo", unit:"kg", stock:8, full:8, cost:null}, // 8 bolsas de 1kg — mismo elote para vasos de elote y para el bowl
     {id:"frappe_cafe", name:"Polvo frappé Café — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_mocha", name:"Polvo frappé Mocha — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_vainilla", name:"Polvo frappé Vainilla — falta costo", unit:"kg", stock:1, full:1, cost:null},
@@ -841,9 +840,10 @@
   ];
 
   // Recetas: solo se meten aquí las cantidades que ya confirmaste. Lo que sigue
-  // pendiente (elote/mazorca por receta, papas de los bowls, fruit bowl, nieves,
-  // otros frappés) se deja sin receta a propósito — así no se descuenta inventario
-  // con un número inventado.
+  // pendiente (elote desgranado por receta — cuánto va en cada Elote Grande/Mediano/
+  // Whimix Elote Bowl —, papas de los bowls, fruit bowl, nieves, otros frappés) se
+  // deja sin receta a propósito — así no se descuenta inventario con un número
+  // inventado.
   const CAPITA_KG = 0.02;      // 1 "capita" de mayonesa/crema ≈ 20g (estimado, confírmalo)
   const CUCHARADA_KG = 0.015;  // 1 cucharada de queso ≈ 15g (estimado, confírmalo)
   const VASO_HIELO_KG = 0.3;   // "1 vaso de hielo" ≈ 300g (estimado, confírmalo)
