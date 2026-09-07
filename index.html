@@ -364,9 +364,6 @@
 
   /* mobile */
   @media (max-width: 820px){
-    /* Red de seguridad: si por el movimiento de la barra de Safari queda
-       algún huequito debajo del contenido, que se vea rojo, no blanco. */
-    html{background:var(--whim-red);}
     .app{flex-direction:column; height:auto;}
     /* La barra lateral se convierte en un menú de pestañas fijo abajo,
        como cualquier app de celular — más fácil de usar con el pulgar. */
@@ -403,6 +400,16 @@
     form.event-form .field{flex-basis:45%;}
     .hero-band{padding:26px 22px 40px;}
     .hero-mascot{display:none;}
+  }
+
+  /* Cuando la app está instalada en la pantalla de inicio (modo standalone),
+     iOS ya no reserva su propia barra abajo, así que el hueco real que hay
+     que cubrir es más grande de lo que a veces reporta env(). Se le da más
+     margen de sobra (con un valor fijo de respaldo) para que la barra roja
+     quede más abajo y no se vea nada blanco debajo. */
+  @media (max-width: 820px) and (display-mode: standalone){
+    .sidebar{padding-bottom: calc(14px + env(safe-area-inset-bottom, 34px));}
+    .main{padding-bottom: calc(96px + env(safe-area-inset-bottom, 34px));}
   }
 </style>
 
