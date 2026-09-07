@@ -898,17 +898,15 @@
 
   const REORDER_POINT = 0.25;
 
+  // Pagos reales (8-sep) — mismos costos fijos de arriba. A Mitch y Gael les
+  // falta el día exacto de pago semanal (nomás sé que es "por semana"), así
+  // que no están aquí todavía — se agregan en cuanto Enrique diga qué día.
   const paymentsSeed = [
-    {id:2, name:"Renta del contenedor", cat:"Renta", amount:4500, due:"2026-09-10"},
-    {id:3, name:"Cuota de espacio — Tec de Monterrey", cat:"Cuota", amount:2000, due:"2026-09-10"},
-    {id:4, name:"Nómina — ayudante de medio tiempo", cat:"Nómina", amount:3200, due:"2026-09-15"},
-    {id:5, name:"Servicio de gas", cat:"Servicios", amount:650, due:"2026-09-20"},
-    {id:6, name:"Servicio de luz", cat:"Servicios", amount:420, due:"2026-09-20"},
+    {id:101, name:"Contador", cat:"Servicios profesionales", amount:5850, due:"2026-09-15"},
+    {id:102, name:"Internet", cat:"Servicios", amount:400, due:"2026-09-30"},
+    {id:103, name:"Servicios (luz y agua, juntos)", cat:"Servicios", amount:null, due:"2026-09-30"},
   ];
-  const paymentsHistory = [
-    {name:"Renta del contenedor — agosto", amount:4500, paid:"2026-08-09"},
-    {name:"Nómina — quincena de agosto", amount:3200, paid:"2026-08-30"},
-  ];
+  const paymentsHistory = [];
 
   // El mercadito de fin de mes es real y recurrente (el de 29-30 ago vendió ~$32,240).
   // Se agenda aquí como evento para que solo bombee la lista de compra la semana en
