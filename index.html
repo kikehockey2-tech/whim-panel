@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Whim Snacks &amp; More</title>
 <meta name="description" content="Panel de control de Whim Snacks &amp; More: ventas, costos e inventario.">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EA3019">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -34,7 +35,7 @@
      light look on purpose rather than following the visitor's OS theme. */
 
   *{box-sizing:border-box;}
-  html, body{overflow-x:hidden; max-width:100%;}
+  html, body{overflow-x:hidden; max-width:100%; height:100%; overscroll-behavior-y:none;}
   body{
     background:var(--bg);
     color:var(--ink);
@@ -365,7 +366,7 @@
       position:fixed; left:0; right:0; bottom:0; top:auto;
       width:auto; height:auto;
       flex-direction:row; align-items:stretch; justify-content:space-around;
-      padding:4px 2px calc(4px + env(safe-area-inset-bottom));
+      padding:4px calc(2px + env(safe-area-inset-right)) calc(4px + env(safe-area-inset-bottom)) calc(2px + env(safe-area-inset-left));
       gap:0; overflow:visible;
       border-right:none; border-top:2px solid rgba(255,255,255,.3);
       z-index:80;
@@ -385,7 +386,7 @@
     }
     .navbtn svg{width:19px; height:19px;}
     .navbtn.active{transform:none; box-shadow:none; border-radius:10px;}
-    .main{padding:18px 16px calc(86px + env(safe-area-inset-bottom));}
+    .main{padding:calc(18px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(86px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));}
     .grid-2, .stat-grid-3, .stat-grid-2{grid-template-columns:1fr;}
     form.event-form .field{flex-basis:45%;}
     .hero-band{padding:26px 22px 40px;}
@@ -395,6 +396,7 @@
 
 </head>
 <body>
+
 <div class="app">
   <aside class="sidebar">
     <div class="brand">
