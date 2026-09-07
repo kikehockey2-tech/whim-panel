@@ -364,6 +364,9 @@
 
   /* mobile */
   @media (max-width: 820px){
+    /* Red de seguridad: si por el movimiento de la barra de Safari queda
+       algún huequito debajo del contenido, que se vea rojo, no blanco. */
+    html{background:var(--whim-red);}
     .app{flex-direction:column; height:auto;}
     /* La barra lateral se convierte en un menú de pestañas fijo abajo,
        como cualquier app de celular — más fácil de usar con el pulgar. */
@@ -375,9 +378,11 @@
       gap:0; overflow:visible;
       border-right:none; border-top:2px solid rgba(255,255,255,.3);
       z-index:80;
-      /* el 0 4px de abajo tapa cualquier hilo blanco por redondeo del alto
-         real de la pantalla en Safari (barra de URL que aparece/desaparece) */
-      box-shadow:0 -6px 16px rgba(36,20,18,.35), 0 4px 0 var(--whim-red);
+      /* Relleno de rojo bien grande por debajo: cuando Safari esconde su
+         barra de URL, revela franja de la página que "bottom:0" no
+         alcanza a cubrir a tiempo. Este bloque sólido tapa esa franja
+         sin importar cuánto se mueva la barra del navegador. */
+      box-shadow:0 -6px 16px rgba(36,20,18,.35), 0 120px 0 var(--whim-red);
     }
     .brand, .demo-badge, .sidebar-foot{display:none;}
     nav.navlist{flex-direction:row; gap:2px; width:100%;}
