@@ -794,9 +794,9 @@
     {id:"vasos", name:"Vaso smoothie 16oz", unit:"pza", stock:110, full:100, cost:1.1}, // conteo 7-sep: 110 — se separó del pool compartido con frappé (ver vasos_frappe)
     {id:"tapas", name:"Tapa smoothie", unit:"pza", stock:8, full:100, cost:0.8}, // conteo 7-sep: 8 — separado del pool compartido con frappé (ver tapas_frappe)
     {id:"popotes", name:"Popote", unit:"pza", stock:300, full:500, cost:0.3}, // confirmado 7-sep: ~300
-    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:4, full:24, cost:18}, // confirmado 7-sep: 4 ("4 cocas")
-    {id:"coca_cola_light", name:"Coca Cola light (lata) — falta contarlas y el costo", unit:"pza", stock:0, full:24, cost:null},
-    {id:"agua_natural_botella", name:"Agua natural (botella) — confirmar cantidad", unit:"pza", stock:5, full:24, cost:8},
+    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:8, full:24, cost:23}, // +4 compradas 8-sep a $23 c/u
+    {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:4, full:24, cost:22}, // 4 compradas 8-sep a $22 c/u
+    {id:"agua_natural_botella", name:"Agua natural (botella) — el 5 base sigue sin confirmar, pero +24 compradas 8-sep son reales", unit:"pza", stock:29, full:24, cost:3.5}, // 24 botellas por $84 total = $3.5 c/u
     // ---------- Conteo del 7-sep (dictado completo) ----------
     {id:"mantequilla", name:"Mantequilla (bote 775g) — falta costo", unit:"pza", stock:3, full:3, cost:null}, // 3 botes de 775g
     {id:"sal", name:"Sal — falta costo", unit:"kg", stock:1, full:2, cost:null}, // 1 bote de 1kg
@@ -917,7 +917,12 @@
   // mes" en Resumen y en Costos sale de esto — no de un cálculo de insumos
   // a partir de las ventas, que es un estimado y NO es dinero ya pagado.
   const realExpenses = {
-    "2026-09": [],
+    "2026-09": [
+      {date:"2026-09-08", name:"Menú nuevo para Whim", amount:700},
+      {date:"2026-09-08", name:"Coca Cola light (4 latas a $22)", amount:88},
+      {date:"2026-09-08", name:"Coca Cola normal (4 latas a $23)", amount:92},
+      {date:"2026-09-08", name:"Agua natural (24 botellas)", amount:84},
+    ],
   };
   function realExpensesForMonth(mk){
     return (realExpenses[mk]||[]).reduce((s,e)=>s+e.amount, 0);
