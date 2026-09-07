@@ -880,13 +880,21 @@
   let trend = [280, 1345, 745, 395, 690, 0, 0]; // Lun..Dom, ingreso real $
   let trendTags = [null,null,null,null,null,"cerrado","cerrado"];
 
+  // Costos fijos reales (8-sep). Mitch y Gael cobran por semana, no por mes — se
+  // convierten a un equivalente mensual (×52/12) solo para sumarlos al total;
+  // en su fila se sigue mostrando el monto real por semana. Servicios (luz+agua)
+  // no tiene monto fijo: se deja sin costo pero visible como pendiente de pago.
   const fixedCosts = [
-    {name:"Renta del contenedor", amount:4500},
-    {name:"Cuota de espacio — Tec de Monterrey", amount:2000},
-    {name:"Nómina — ayudante de medio tiempo", amount:6400},
-    {name:"Gas", amount:650},
-    {name:"Luz", amount:420},
+    {name:"Contador", amount:5850, frequency:"monthly", dueLabel:"se paga el 15 de cada mes"},
+    {name:"Pago a Mitch", amount:1500, frequency:"weekly", dueLabel:"cada semana"},
+    {name:"Pago a Gael", amount:1500, frequency:"weekly", dueLabel:"cada semana"},
+    {name:"Internet", amount:400, frequency:"monthly", dueLabel:"se paga el 30 de cada mes"},
+    {name:"Servicios (luz y agua, juntos)", amount:null, frequency:"monthly", dueLabel:"se paga a fin de mes — sin monto fijo"},
   ];
+  function monthlyEquivalent(f){
+    if(f.amount == null) return 0;
+    return f.frequency === "weekly" ? f.amount*52/12 : f.amount;
+  }
 
   const REORDER_POINT = 0.25;
 
@@ -1015,7 +1023,7 @@
   // gasto (fijos + insumos reales) de un mes — si es el mes en curso, prorratea
   // los fijos a la fecha y proyecta el cierre a partir de lo ya vendido
   function spendForMonth(mk){
-    const monthlyFixed = fixedCosts.reduce((s,f)=>s+f.amount,0);
+    const monthlyFixed = fixedCosts.reduce((s,f)=>s+monthlyEquivalent(f),0);
     const variable = realVariableCostForMonth(mk);
     if(mk !== CURRENT_MONTH_KEY){
       return {fixed:monthlyFixed, variable, total:monthlyFixed+variable, current:false};
@@ -1487,10 +1495,12 @@
     });
     renderCollapsible("costosBody", "costosBodyMore", costosRowsHtml, 8);
 
-    const fixedMonthly = fixedCosts.reduce((s,f)=>s+f.amount,0);
-    document.getElementById("fixedCostsList").innerHTML = fixedCosts.map(f=>`
-      <div class="row"><span class="rtitle">${f.name}</span><span class="rmeta mono">${fmtMoney(f.amount)}</span></div>`).join("");
-    document.getElementById("fixedTotal").textContent = fmtMoney(fixedMonthly)+" /mes";
+    const fixedMonthly = fixedCosts.reduce((s,f)=>s+monthlyEquivalent(f),0);
+    document.getElementById("fixedCostsList").innerHTML = fixedCosts.map(f=>{
+      const label = f.amount==null ? "Sin monto fijo" : fmtMoney(f.amount) + (f.frequency==="weekly" ? " /semana" : " /mes");
+      return `<div class="row"><span class="rtitle">${f.name}<span class="rmeta" style="display:block; font-weight:400;">${f.dueLabel||""}</span></span><span class="rmeta mono">${label}</span></div>`;
+    }).join("");
+    document.getElementById("fixedTotal").textContent = fmtMoney(fixedMonthly)+" /mes (equivalente)";
 
     const weeklyRev = products.reduce((s,p)=>s+p.price*(weeklySales[p.id]||0),0);
     const weeklyIngredientCost = products.reduce((s,p)=>s+costOf(p)*(weeklySales[p.id]||0),0);
