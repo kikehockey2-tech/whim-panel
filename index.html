@@ -793,8 +793,8 @@
     {id:"hielo", name:"Hielo en bolsa (5kg c/u)", unit:"kg", stock:2.5, full:10, cost:12}, // conteo 7-sep: 1/2 bolsa de 5kg
     {id:"azucar", name:"Azúcar — falta cantidad por receta exacta", unit:"kg", stock:2, full:1, cost:24}, // conteo 7-sep: 2kg
     {id:"leche", name:"Leche", unit:"L", stock:1, full:5, cost:22},             // conteo 7-sep: 1 cartón de 1L
-    {id:"platano", name:"Plátano — falta stock", unit:"kg", stock:0, full:0.5, cost:3}, // 500g de barra (8-sep)
-    {id:"fruta_mango", name:"Mango congelado", unit:"kg", stock:0, full:3, cost:55}, // confirmado 8-sep: sin existencia
+    {id:"platano", name:"Plátano — falta stock", unit:"kg", stock:0, full:0.5, cost:3}, // 500g de barra (7-sep)
+    {id:"fruta_mango", name:"Mango congelado", unit:"kg", stock:0, full:3, cost:55}, // confirmado 7-sep: sin existencia
     {id:"fruta_fresa", name:"Fresa congelada", unit:"kg", stock:1, full:3, cost:55}, // conteo 7-sep: como 1kg
     {id:"limon", name:"Limón — falta stock", unit:"pza", stock:35, full:20, cost:1.2},
     {id:"fruta_berries", name:"Berries congeladas", unit:"kg", stock:1.3, full:2, cost:95}, // conteo 7-sep: 1 bolsa de 1.3kg
@@ -804,9 +804,9 @@
     {id:"vasos", name:"Vaso smoothie 16oz", unit:"pza", stock:110, full:100, cost:1.1}, // conteo 7-sep: 110 — se separó del pool compartido con frappé (ver vasos_frappe)
     {id:"tapas", name:"Tapa smoothie", unit:"pza", stock:8, full:100, cost:0.8}, // conteo 7-sep: 8 — separado del pool compartido con frappé (ver tapas_frappe)
     {id:"popotes", name:"Popote", unit:"pza", stock:300, full:500, cost:0.3}, // confirmado 7-sep: ~300
-    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:8, full:24, cost:23}, // +4 compradas 8-sep a $23 c/u
-    {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:4, full:24, cost:22}, // 4 compradas 8-sep a $22 c/u
-    {id:"agua_natural_botella", name:"Agua natural (botella) — el 5 base sigue sin confirmar, pero +24 compradas 8-sep son reales", unit:"pza", stock:29, full:24, cost:3.5}, // 24 botellas por $84 total = $3.5 c/u
+    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:8, full:24, cost:23}, // +4 compradas 7-sep a $23 c/u
+    {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:4, full:24, cost:22}, // 4 compradas 7-sep a $22 c/u
+    {id:"agua_natural_botella", name:"Agua natural (botella) — el 5 base sigue sin confirmar, pero +24 compradas 7-sep son reales", unit:"pza", stock:29, full:24, cost:3.5}, // 24 botellas por $84 total = $3.5 c/u
     // ---------- Conteo del 7-sep (dictado completo) ----------
     {id:"mantequilla", name:"Mantequilla (bote 775g) — falta costo", unit:"pza", stock:3, full:3, cost:null}, // 3 botes de 775g
     {id:"sal", name:"Sal — falta costo", unit:"kg", stock:1, full:2, cost:null}, // 1 bote de 1kg
@@ -833,7 +833,7 @@
     {id:"nieve_mango", name:"Nieve sabor mango — sin existencia", unit:"L", stock:0, full:5, cost:null},
     {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy — sin existencia", unit:"L", stock:0, full:5, cost:null},
     {id:"botanera", name:"Botanera — falta costo", unit:"kg", stock:1.585, full:1.585, cost:null}, // conteo 7-sep: 4 botes en total — 2 con 810g y 775g, 2 ya vacíos
-    {id:"elote_desgranado", name:"Elote desgranado — falta cantidad para el Whimix Elote Bowl y el costo", unit:"kg", stock:8, full:15, cost:null}, // 8 bolsas de 1kg. Barra de resupply puesta en 15kg (8-sep)
+    {id:"elote_desgranado", name:"Elote desgranado — falta cantidad para el Whimix Elote Bowl y el costo", unit:"kg", stock:8, full:15, cost:null}, // 8 bolsas de 1kg. Barra de resupply puesta en 15kg (7-sep)
     {id:"frappe_cafe", name:"Polvo frappé Café — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_mocha", name:"Polvo frappé Mocha — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_vainilla", name:"Polvo frappé Vainilla — falta costo", unit:"kg", stock:1, full:1, cost:null},
@@ -890,7 +890,7 @@
   let trend = [280, 1345, 745, 395, 690, 0, 0]; // Lun..Dom, ingreso real $
   let trendTags = [null,null,null,null,null,"cerrado","cerrado"];
 
-  // Costos fijos reales (8-sep). Mitch y Gael cobran por semana, no por mes — se
+  // Costos fijos reales (7-sep). Mitch y Gael cobran por semana, no por mes — se
   // convierten a un equivalente mensual (×52/12) solo para sumarlos al total;
   // en su fila se sigue mostrando el monto real por semana. Servicios (luz+agua)
   // no tiene monto fijo: se deja sin costo pero visible como pendiente de pago.
@@ -908,7 +908,7 @@
 
   const REORDER_POINT = 0.25;
 
-  // Pagos reales (8-sep) — mismos costos fijos de arriba. Mitch y Gael cobran
+  // Pagos reales (7-sep) — mismos costos fijos de arriba. Mitch y Gael cobran
   // cada viernes: aquí solo se guarda la fecha del PRÓXIMO viernes — como esta
   // lista no se repite sola cada semana, hay que avisarme para adelantar la
   // fecha una vez que ese pago quede marcado como hecho.
@@ -928,10 +928,10 @@
   // a partir de las ventas, que es un estimado y NO es dinero ya pagado.
   const realExpenses = {
     "2026-09": [
-      {date:"2026-09-08", name:"Menú nuevo para Whim", amount:700},
-      {date:"2026-09-08", name:"Coca Cola light (4 latas a $22)", amount:88},
-      {date:"2026-09-08", name:"Coca Cola normal (4 latas a $23)", amount:92},
-      {date:"2026-09-08", name:"Agua natural (24 botellas)", amount:84},
+      {date:"2026-09-07", name:"Menú nuevo para Whim", amount:700},
+      {date:"2026-09-07", name:"Coca Cola light (4 latas a $22)", amount:88},
+      {date:"2026-09-07", name:"Coca Cola normal (4 latas a $23)", amount:92},
+      {date:"2026-09-07", name:"Agua natural (24 botellas)", amount:84},
     ],
   };
   function realExpensesForMonth(mk){
@@ -1275,7 +1275,7 @@
   // insumo sin receta completa (Whimix Elote Bowl, fruit bowl, nieves, otros
   // frappés) simplemente no tiene por dónde descontarse y se queda como el
   // último conteo, igual que antes.
-  const STOCK_BASELINE = "2026-09-08"; // fecha del conteo físico más reciente
+  const STOCK_BASELINE = "2026-09-07"; // fecha del conteo físico más reciente
   function realStockNow(ing){
     let consumed = 0;
     Object.entries(dailySales).forEach(([day, d]) => {
