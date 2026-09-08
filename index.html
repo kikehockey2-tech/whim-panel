@@ -670,7 +670,7 @@
       <section class="block">
         <div class="block-head">
           <h2>Gasto mensual</h2>
-          <span class="block-note">Fijos + insumos reales — pícale a un mes para ver el detalle</span>
+          <span class="block-note">Pícale a un mes para ver el detalle</span>
         </div>
         <div class="stat-highlight">
           <span class="stat-label">Gastado en <span id="curMonthLabel"></span> (a la fecha)</span>
@@ -679,6 +679,16 @@
         </div>
         <div class="rowlist ticket-rail" id="monthlySpendList"></div>
         <div class="rowlist" id="monthSpendDetail" style="margin-top:16px;"></div>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <h2>Historial de costos</h2>
+          <span class="block-note">Todo lo que has pagado o comprado, real — más reciente primero</span>
+        </div>
+        <div class="rowlist ticket-rail" id="costHistoryBody"></div>
+        <div class="viewmore" id="costHistoryBodyMore"></div>
+        <div class="total-line"><span>Total histórico</span><span class="amount" id="costHistoryTotal">—</span></div>
       </section>
     </section>
 
@@ -1568,21 +1578,20 @@
     document.getElementById("fixedTotal").textContent = fmtMoney(fixedMonthly)+" /mes (equivalente)";
 
     const weeklyRev = products.reduce((s,p)=>s+p.price*(weeklySales[p.id]||0),0);
-    const weeklyIngredientCost = products.reduce((s,p)=>s+costOf(p)*(weeklySales[p.id]||0),0);
-    // Real, no prorrateado: solo los fijos que ya marcaste "Pagado" en Pagos
-    // y cuyo vencimiento cae en esta semana (lun-hoy) — si no has pagado
-    // nada esta semana, esto es $0.
+    // Ya no se resta un "costo de insumos" estimado: no lo tenemos todavía
+    // (nomás lo real que Enrique vaya reportando). Real, no prorrateado:
+    // solo los fijos que ya marcaste "Pagado" en Pagos y cuyo vencimiento
+    // cae en esta semana (lun-hoy) — si no has pagado nada, esto es $0.
     const daysSinceMondayW = (TODAY.getDay()+6)%7;
     const mondayW = new Date(TODAY.getTime() - daysSinceMondayW*MS_DAY);
     const weeklyFixedPaid = paymentsSeed
       .filter(p => p.amount && paidIds.has(p.id))
       .filter(p => { const d = new Date(p.due+"T00:00:00"); return d>=mondayW && d<=TODAY; })
       .reduce((s,p)=>s+p.amount, 0);
-    const netWeekly = weeklyRev-weeklyIngredientCost-weeklyFixedPaid;
+    const netWeekly = weeklyRev-weeklyFixedPaid;
 
     document.getElementById("weeklySummary").innerHTML = `
       <div class="row"><span class="rtitle">Ingresos</span><span class="rmeta mono">${fmtMoney(weeklyRev)}</span></div>
-      <div class="row"><span class="rtitle">Costo de insumos</span><span class="rmeta mono">−${fmtMoney(weeklyIngredientCost)}</span></div>
       <div class="row"><span class="rtitle">Costos fijos (pagados esta semana)</span><span class="rmeta mono">−${fmtMoney(weeklyFixedPaid)}</span></div>`;
     document.getElementById("netWeekly").textContent = fmtMoney(netWeekly);
   }
@@ -1605,11 +1614,12 @@
         <p class="block-note" style="text-align:left; max-width:none; margin-top:8px;">${items.length? '' : 'Todavía no me has reportado ninguna compra este mes. '}Esto es solo lo que ya se pagó o me dijiste — no un estimado. Se actualiza en cuanto me pases un gasto nuevo.</p>`;
       return;
     }
+    // Mes pasado: solo costos fijos (no hay estimado de insumos — eso no lo
+    // tenemos, se va a ir construyendo con lo que Enrique reporte).
     const s = spendForMonth(mk);
     document.getElementById("monthSpendDetail").innerHTML = `
-      <div class="row"><span class="rtitle">Costo de insumos</span><span class="rmeta mono">${fmtMoney(s.variable)}</span></div>
       <div class="row"><span class="rtitle">Costos fijos</span><span class="rmeta mono">${fmtMoney(s.fixed)}</span></div>
-      <div class="total-line"><span>Total ${monthLabel(mk)}</span><span class="amount mono">${fmtMoney(s.total)}</span></div>`;
+      <div class="total-line"><span>Total ${monthLabel(mk)}</span><span class="amount mono">${fmtMoney(s.fixed)}</span></div>`;
   }
 
   function renderMonthlySpend(){
@@ -1620,7 +1630,7 @@
 
     let months = monthKeysAvailable().slice().reverse();
     if(!months.includes(CURRENT_MONTH_KEY)) months = [CURRENT_MONTH_KEY, ...months];
-    const amounts = months.map(mk => mk===CURRENT_MONTH_KEY ? realTotal : spendForMonth(mk).total);
+    const amounts = months.map(mk => mk===CURRENT_MONTH_KEY ? realTotal : spendForMonth(mk).fixed);
     const maxAmt = Math.max(...amounts, 1);
     document.getElementById("monthlySpendList").innerHTML = months.map((mk,idx)=>{
       const amt = amounts[idx];
@@ -1640,6 +1650,27 @@
       row.addEventListener("click", ()=> showMonthSpendDetail(row.getAttribute("data-month")));
     });
     if(months.length) showMonthSpendDetail(months[0]);
+  }
+
+  // ---------- Render: historial de costos (todo lo real, pagado o reportado) ----------
+  function computeCostHistory(){
+    const paidFixed = paymentsSeed
+      .filter(p => p.amount && paidIds.has(p.id))
+      .map(p => ({date: p.due, name: p.name, amount: p.amount, tag: "Fijo pagado"}));
+    const reported = Object.values(realExpenses).flat()
+      .map(e => ({date: e.date, name: e.name, amount: e.amount, tag: "Compra reportada"}));
+    return [...paidFixed, ...reported].sort((a,b)=> b.date.localeCompare(a.date));
+  }
+  function renderCostHistory(){
+    const rows = computeCostHistory();
+    const rowsHtml = rows.map(r=>`
+      <div class="row">
+        <div><div class="rtitle">${r.name}</div><div class="rmeta">${fmtDate(new Date(r.date+"T00:00:00"))} · ${r.tag}</div></div>
+        <span class="rmeta mono">${fmtMoney(r.amount)}</span>
+      </div>`);
+    renderCollapsible("costHistoryBody", "costHistoryBodyMore", rowsHtml, 8);
+    document.getElementById("costHistoryTotal").textContent = fmtMoney(rows.reduce((s,r)=>s+r.amount,0));
+    if(!rows.length) document.getElementById("costHistoryBody").innerHTML = `<div class="rmeta">Todavía no hay nada pagado ni reportado.</div>`;
   }
 
   // ---------- Render: pagos ----------
@@ -1774,6 +1805,7 @@
     renderMonthlySales();
     renderCostos();
     renderMonthlySpend();
+    renderCostHistory();
     renderPagos();
     renderEvents();
   }
