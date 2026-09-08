@@ -947,6 +947,18 @@
   function realSpentForMonth(mk){
     return realFixedPaidForMonth(mk) + realExpensesForMonth(mk);
   }
+  // Para tarjetas de resumen (Ventas y Costos): mes en curso = 100% real
+  // (fijos pagados + lo reportado); mes pasado = solo fijos reales, sin
+  // ningún estimado de insumos.
+  function displaySpendForMonth(mk){
+    if(mk === CURRENT_MONTH_KEY){
+      const fixed = realFixedPaidForMonth(mk);
+      const variable = realExpensesForMonth(mk);
+      return {fixed, variable, total: fixed+variable, current: true};
+    }
+    const fixed = spendForMonth(mk).fixed;
+    return {fixed, variable: 0, total: fixed, current: false};
+  }
 
   // El mercadito de fin de mes es real y recurrente (el de 29-30 ago vendió ~$32,240).
   // Se agenda aquí como evento para que solo bombee la lista de compra la semana en
@@ -1503,7 +1515,7 @@
 
   function showMonthDetail(mk){
     const s = computeMonthSummary(mk);
-    const c = spendForMonth(mk);
+    const c = displaySpendForMonth(mk);
     const net = s.total - c.total;
     document.querySelectorAll("#monthList [data-month]").forEach(row=>{
       row.style.outline = row.getAttribute("data-month")===mk ? "2px solid var(--accent)" : "none";
@@ -1516,7 +1528,7 @@
         <div class="stat-highlight" style="margin-bottom:0;"><span class="stat-label">Total vendido</span><span class="stat-value">${fmtMoney(s.total)}</span></div>
       </div>
       <div class="stat-grid stat-grid-2">
-        <div class="stat-highlight" style="margin-bottom:0; border-color:var(--warn);"><span class="stat-label">Costo total${c.current?' (a la fecha)':''}</span><span class="stat-value">${fmtMoney(c.total)}</span><span class="stat-sub">fijos ${fmtMoney(c.fixed)} + insumos ${fmtMoney(c.variable)}</span></div>
+        <div class="stat-highlight" style="margin-bottom:0; border-color:var(--warn);"><span class="stat-label">Costo real${c.current?' (a la fecha)':''}</span><span class="stat-value">${fmtMoney(c.total)}</span><span class="stat-sub">fijos pagados ${fmtMoney(c.fixed)}${c.current? ' + reportado '+fmtMoney(c.variable) : ''}</span></div>
         <div class="stat-highlight" style="margin-bottom:0; border-color:${net>=0?'var(--good)':'var(--crit)'};"><span class="stat-label">Ganancia neta${c.current?' (a la fecha)':''}</span><span class="stat-value" style="color:${net>=0?'var(--good)':'var(--crit)'};">${fmtMoney(net)}</span><span class="stat-sub">${monthLabel(mk)}</span></div>
       </div>
       <div class="chart-wrap" id="monthChartWrap" style="margin-bottom:18px;"></div>
