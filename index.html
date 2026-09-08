@@ -1275,11 +1275,11 @@
   // insumo sin receta completa (Whimix Elote Bowl, fruit bowl, nieves, otros
   // frappés) simplemente no tiene por dónde descontarse y se queda como el
   // último conteo, igual que antes.
-  const STOCK_BASELINE = "2026-09-07"; // fecha del conteo físico más reciente
+  const STOCK_BASELINE = "2026-09-07"; // fecha del conteo físico más reciente — se hizo antes de abrir, así que las ventas de ese mismo día también se descuentan
   function realStockNow(ing){
     let consumed = 0;
     Object.entries(dailySales).forEach(([day, d]) => {
-      if(day <= STOCK_BASELINE) return; // solo lo vendido DESPUÉS del conteo
+      if(day < STOCK_BASELINE) return; // el conteo fue antes de abrir, así que las ventas de ese mismo día ya cuentan
       d.items.forEach(it => {
         const p = PRODUCT_BY_NAME[it.n.toLowerCase()];
         if(!p) return;
