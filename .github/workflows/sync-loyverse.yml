@@ -2,9 +2,12 @@ name: Sincronizar ventas de Loyverse
 
 on:
   schedule:
-    # Cada hora, en el minuto 5 (para no pegarle justo a la hora en punto,
-    # cuando GitHub tiene más carga y a veces retrasa las corridas).
-    - cron: "5 * * * *"
+    # Cada 15 minutos. El límite real de Loyverse es 300 solicitudes cada
+    # 300 segundos (60/min) — esta corrida usa solo 3-4, así que no hay
+    # riesgo de tope. GitHub sí puede retrasar un poco las corridas muy
+    # frecuentes en horas de mucha carga; no afecta la función, solo el
+    # minuto exacto.
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}  # también se puede correr a mano desde GitHub
 
 permissions:
