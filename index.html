@@ -830,10 +830,10 @@
     {id:"salsa_inglesa", name:"Salsa inglesa (Worcestershire) 300ml — falta costo", unit:"botella", stock:1, full:1, cost:null}, // confirmado 7-sep: 1 botella llena
     {id:"salsa_maggi", name:"Salsa Maggi — falta tamaño de botella y costo", unit:"botella", stock:0.5, full:1, cost:null}, // la mitad
     {id:"chile_de_pelon", name:"Chile de pelón — falta confirmar qué es exactamente, tamaño y costo", unit:"pza", stock:1, full:1, cost:null},
-    {id:"nieve_mango", name:"Nieve sabor mango — sin existencia", unit:"L", stock:0, full:5, cost:null},
-    {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy — sin existencia", unit:"L", stock:0, full:5, cost:null},
+    {id:"nieve_mango", name:"Nieve sabor mango (bote 5L)", unit:"L", stock:5, full:5, cost:50}, // compra 8-sep: 5L a $250 -> $50/L
+    {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy (bote 5L)", unit:"L", stock:5, full:5, cost:50}, // compra 8-sep: 5L a $250 -> $50/L
     {id:"botanera", name:"Botanera — falta costo", unit:"kg", stock:1.585, full:1.585, cost:null}, // conteo 7-sep: 4 botes en total — 2 con 810g y 775g, 2 ya vacíos
-    {id:"elote_desgranado", name:"Elote desgranado — falta cantidad para el Whimix Elote Bowl y el costo", unit:"kg", stock:8, full:15, cost:null}, // 8 bolsas de 1kg. Barra de resupply puesta en 15kg (7-sep)
+    {id:"elote_desgranado", name:"Elote desgranado", unit:"kg", stock:18, full:15, cost:70}, // stock 8 + compra 8-sep 10kg/$700 -> $70/kg
     {id:"frappe_cafe", name:"Polvo frappé Café — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_mocha", name:"Polvo frappé Mocha — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_vainilla", name:"Polvo frappé Vainilla — falta costo", unit:"kg", stock:1, full:1, cost:null},
@@ -853,17 +853,18 @@
 
   // Recetas: solo se meten aquí las cantidades que ya confirmaste. Elote Grande/
   // Mediano ya tienen su elote_desgranado (calculado por volumen de vaso, 85%
-  // grano). Lo que sigue pendiente (elote del Whimix Elote Bowl, papas de los
-  // bowls, fruit bowl, nieves, otros frappés) se deja sin receta a propósito —
-  // así no se descuenta inventario con un número inventado.
+  // grano). Whimix Elote Bowl usa la misma cantidad de elote que el mediano
+  // (confirmado 8-sep). Lo pendiente (papas de los bowls, fruit bowl, nieves,
+  // otros frappés) se deja sin receta a propósito — así no se descuenta
+  // inventario con un número inventado.
   const CAPITA_KG = 0.02;      // 1 "capita" de mayonesa/crema ≈ 20g (estimado, confírmalo)
   const CUCHARADA_KG = 0.015;  // 1 cucharada de queso ≈ 15g (estimado, confírmalo)
   const VASO_HIELO_KG = 0.3;   // "1 vaso de hielo" ≈ 300g (estimado, confírmalo)
   const recipes = {
     elote_grande: {elote_desgranado:0.279, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_16oz:1, cuchara:1}, // 279g = vaso 16oz al 85% de puro grano (0.693 g/mL)
     elote_mediano: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_12oz:1, cuchara:1}, // 209g = vaso 12oz al 85% de puro grano
-    // mismas cantidades de mayo/crema/queso que el elote — falta la cantidad de elote y de papa
-    whimix_elote: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // falta cuánto elote_desgranado lleva — ¿en qué tamaño de recipiente se sirve?
+    // mismas cantidades de mayo/crema/queso que el elote; elote = mismo que mediano (8-sep); falta papa
+    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // 209g = misma cantidad que elote mediano
     whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
     smoothie_cocoa: {hielo:VASO_HIELO_KG, platano:2.5, vasos:1, tapas:1, popotes:1},
     smoothie_mangonada: {hielo:VASO_HIELO_KG, fruta_mango:.15, azucar:.02, chamoy:.01, vasos:1, tapas:1, popotes:1},
@@ -933,9 +934,15 @@
       {date:"2026-09-07", name:"Coca Cola light (4 latas a $22)", amount:88},
       {date:"2026-09-07", name:"Coca Cola normal (4 latas a $23)", amount:92},
       {date:"2026-09-07", name:"Agua natural (24 botellas)", amount:84},
-      {date:"2026-09-08", name:"Hielo, agua, bowls y tapas (100 bowls, 50+50 tapas)", amount:630},
+      {date:"2026-09-08", name:"Bowls y tapas (100 bowls, 50+50 tapas)", amount:630},
+      {date:"2026-09-08", name:"Hielo y agua (para smoothies)", amount:72},
       {date:"2026-09-08", name:"Banderillas (45) + Salsa Valentina", amount:147},
       {date:"2026-09-08", name:"Queso rallado, queso amarillo y mayonesa", amount:1046},
+      {date:"2026-09-08", name:"Leche (2, a $32 c/u)", amount:64},
+      {date:"2026-09-08", name:"Nieve mango (5L)", amount:250},
+      {date:"2026-09-08", name:"Nieve mango con chamoy (5L)", amount:250},
+      {date:"2026-09-08", name:"Botes", amount:200},
+      {date:"2026-09-08", name:"Elote desgranado (10kg)", amount:700},
     ],
   };
   function realExpensesForMonth(mk){
