@@ -864,7 +864,9 @@
     elote_grande: {elote_desgranado:0.279, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_16oz:1, cuchara:1}, // 279g = vaso 16oz al 85% de puro grano (0.693 g/mL)
     elote_mediano: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_12oz:1, cuchara:1}, // 209g = vaso 12oz al 85% de puro grano
     // mismas cantidades de mayo/crema/queso que el elote; elote = mismo que mediano (8-sep); falta papa
-    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // 209g = misma cantidad que elote mediano
+    // + fruta, chamoy, gomitas y miguelito de encima (8-sep) — cantidades
+    // estimadas como topping, no como porción principal; confírmalas.
+    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, fruta_mixta:.06, chamoy:.01, gomitas:.02, miguelito:.005}, // 209g = misma cantidad que elote mediano
     whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
     smoothie_cocoa: {hielo:VASO_HIELO_KG, platano:2.5, vasos:1, tapas:1, popotes:1},
     smoothie_mangonada: {hielo:VASO_HIELO_KG, fruta_mango:.15, azucar:.02, chamoy:.01, vasos:1, tapas:1, popotes:1},
@@ -872,6 +874,13 @@
     smoothie_berries: {hielo:VASO_HIELO_KG, fruta_berries:.15, azucar:.02, vasos:1, tapas:1, popotes:1},
     smoothie_pinacoco: {hielo:VASO_HIELO_KG, fruta_pina:.1, coco:.05, azucar:.02, vasos:1, tapas:1, popotes:1},
     matcha: {hielo:VASO_HIELO_KG, leche:.15, polvo_matcha:.025, vasos:1, tapas:1, popotes:1}, // 25g por bebida (1kg alcanza para 40, igual que antes)
+    // Frappés (8-sep): 150ml de leche + 1 vaso de hielo + 50g de polvo del
+    // sabor (1kg de polvo alcanza para ~20 bebidas, según Enrique).
+    frappe_cafe: {leche:.15, hielo:VASO_HIELO_KG, frappe_cafe:.05, vasos_frappe:1, tapas_frappe:1, popotes:1},
+    frappe_mocha: {leche:.15, hielo:VASO_HIELO_KG, frappe_mocha:.05, vasos_frappe:1, tapas_frappe:1, popotes:1},
+    frappe_vainilla: {leche:.15, hielo:VASO_HIELO_KG, frappe_vainilla:.05, vasos_frappe:1, tapas_frappe:1, popotes:1},
+    frappe_chocolate: {leche:.15, hielo:VASO_HIELO_KG, frappe_chocolate:.05, vasos_frappe:1, tapas_frappe:1, popotes:1},
+    frappe_chai: {leche:.15, hielo:VASO_HIELO_KG, frappe_chai:.05, vasos_frappe:1, tapas_frappe:1, popotes:1},
     coca_cola: {coca_cola_normal:1}, // Loyverse solo vende "Coca cola" genérico — no distingue normal/light todavía
     agua_natural: {agua_natural_botella:1},
   };
