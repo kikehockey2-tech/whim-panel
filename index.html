@@ -779,10 +779,10 @@
   // Stock real que nos diste (bolsas/botellas/piezas contadas) — donde no nos has
   // dado el conteo todavía, se queda como estaba: cifra de ejemplo.
   const ingredients = [
-    {id:"mayonesa", name:"Mayonesa", unit:"kg", stock:3, full:10, cost:58},       // conteo 7-sep: 3 bolsas de 1kg
+    {id:"mayonesa", name:"Mayonesa", unit:"kg", stock:13, full:10, cost:58},      // +10 compradas 8-sep
     {id:"crema", name:"Crema", unit:"kg", stock:10, full:10, cost:32},           // conteo 7-sep: 10 bolsas de 1kg
-    {id:"queso_amarillo", name:"Queso amarillo", unit:"kg", stock:3, full:10, cost:150}, // conteo 7-sep: 3 bolsas de 1kg
-    {id:"queso_rallado", name:"Queso rallado", unit:"kg", stock:1, full:3, cost:140},   // conteo 7-sep: 1 bolsa de 1kg
+    {id:"queso_amarillo", name:"Queso amarillo", unit:"kg", stock:13, full:10, cost:150}, // +10 compradas 8-sep
+    {id:"queso_rallado", name:"Queso rallado", unit:"kg", stock:3, full:3, cost:140},   // +2 compradas 8-sep
     {id:"vaso_16oz", name:"Vaso 16oz (elote/nieve grande)", unit:"pza", stock:850, full:1000, cost:1.5},
     {id:"vaso_12oz", name:"Vaso 12oz (elote/nieve mediana)", unit:"pza", stock:700, full:1000, cost:1.2},
     {id:"cuchara", name:"Cuchara desechable", unit:"pza", stock:175, full:300, cost:0.4}, // conteo 7-sep: 7 paquetes de 25
@@ -790,9 +790,9 @@
     {id:"fruta_mixta", name:"Fruta mixta (fruit bowl)", unit:"kg", stock:0, full:2, cost:45}, // sin existencia ahorita
     {id:"chamoy", name:"Chamoy", unit:"kg", stock:1, full:2, cost:80},           // confirmado 7-sep: 1kg
     {id:"gomitas", name:"Gomitas — falta stock", unit:"kg", stock:0.4, full:0.5, cost:90},
-    {id:"hielo", name:"Hielo en bolsa (5kg c/u)", unit:"kg", stock:2.5, full:10, cost:12}, // conteo 7-sep: 1/2 bolsa de 5kg
+    {id:"hielo", name:"Hielo en bolsa (5kg c/u)", unit:"kg", stock:7.5, full:10, cost:10}, // +1 bolsa de 5kg por $50 (8-sep) = $10/kg
     {id:"azucar", name:"Azúcar — falta cantidad por receta exacta", unit:"kg", stock:2, full:1, cost:24}, // conteo 7-sep: 2kg
-    {id:"leche", name:"Leche", unit:"L", stock:1, full:5, cost:22},             // conteo 7-sep: 1 cartón de 1L
+    {id:"leche", name:"Leche", unit:"L", stock:3, full:5, cost:22},             // +2 compradas 8-sep — falta el precio de esta compra
     {id:"platano", name:"Plátano — falta stock", unit:"kg", stock:0, full:0.5, cost:3}, // 500g de barra (7-sep)
     {id:"fruta_mango", name:"Mango congelado", unit:"kg", stock:0, full:3, cost:55}, // confirmado 7-sep: sin existencia
     {id:"fruta_fresa", name:"Fresa congelada", unit:"kg", stock:1, full:3, cost:55}, // conteo 7-sep: como 1kg
@@ -802,7 +802,7 @@
     {id:"coco", name:"Coco rallado — falta stock", unit:"kg", stock:0.4, full:1, cost:70},
     {id:"polvo_matcha", name:"Polvo de matcha", unit:"kg", stock:1, full:1, cost:15},
     {id:"vasos", name:"Vaso smoothie 16oz", unit:"pza", stock:110, full:100, cost:1.1}, // conteo 7-sep: 110 — se separó del pool compartido con frappé (ver vasos_frappe)
-    {id:"tapas", name:"Tapa smoothie", unit:"pza", stock:8, full:100, cost:0.8}, // conteo 7-sep: 8 — separado del pool compartido con frappé (ver tapas_frappe)
+    {id:"tapas", name:"Tapa smoothie", unit:"pza", stock:58, full:100, cost:0.8}, // +50 compradas 8-sep
     {id:"popotes", name:"Popote", unit:"pza", stock:300, full:500, cost:0.3}, // confirmado 7-sep: ~300
     {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:8, full:24, cost:23}, // +4 compradas 7-sep a $23 c/u
     {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:4, full:24, cost:22}, // 4 compradas 7-sep a $22 c/u
@@ -811,29 +811,29 @@
     {id:"mantequilla", name:"Mantequilla (bote 775g) — falta costo", unit:"pza", stock:3, full:3, cost:null}, // 3 botes de 775g
     {id:"sal", name:"Sal — falta costo", unit:"kg", stock:1, full:2, cost:null}, // 1 bote de 1kg
     {id:"vasos_frappe", name:"Vaso frappé (sin receta conectada aún) — falta costo", unit:"pza", stock:60, full:100, cost:null},
-    {id:"tapas_frappe", name:"Tapa frappé (sin receta conectada aún) — falta costo", unit:"pza", stock:8, full:100, cost:null},
+    {id:"tapas_frappe", name:"Tapa frappé (sin receta conectada aún) — falta costo", unit:"pza", stock:58, full:100, cost:null}, // +50 compradas 8-sep
     {id:"servilletas", name:"Servilletas (paquete grande) — falta costo", unit:"paquete", stock:2, full:2, cost:null},
-    {id:"bowls", name:"Bowl — falta costo", unit:"pza", stock:8, full:100, cost:null},
+    {id:"bowls", name:"Bowl — falta costo", unit:"pza", stock:108, full:100, cost:null}, // +100 compradas 8-sep
     {id:"polvo_no_picante", name:"Polvo salsa no picante — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"polvo_chile_morita", name:"Polvo salsa chile morita — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"polvo_picante", name:"Polvo salsa picante — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"tajin", name:"Tajín (bolsa grande) — falta costo", unit:"kg", stock:0.5, full:1, cost:null}, // 500g
     {id:"miguelito", name:"Miguelito — falta costo", unit:"kg", stock:0.95, full:1, cost:null}, // 950g
-    {id:"banderillas_tamarindo", name:"Banderilla de tamarindo (para smoothies) — falta costo y receta", unit:"pza", stock:9, full:50, cost:null},
+    {id:"banderillas_tamarindo", name:"Banderilla de tamarindo (para smoothies) — falta costo y receta", unit:"pza", stock:54, full:50, cost:null}, // +45 compradas 8-sep
     // Salsas embotelladas "de afuera": se trackean como fracción de una botella (full:1 = una botella
     // llena) porque no me dieron el tamaño real de cada una — falta esa info y el costo.
     {id:"salsa_sonora", name:"Salsa Sonora 355 — falta costo", unit:"botella", stock:0.5, full:1, cost:null}, // a la mitad
-    {id:"salsa_valentina_normal", name:"Salsa Valentina normal — falta tamaño de botella y costo", unit:"botella", stock:0.25, full:1, cost:null}, // 1/4
+    {id:"salsa_valentina_normal", name:"Salsa Valentina normal — falta tamaño de botella y costo", unit:"botella", stock:1, full:1, cost:null}, // se compró 1 botella nueva 8-sep (asumo que la deja llena)
     {id:"tajin_chico_botella", name:"Tajín chico (botella 142) — falta costo", unit:"botella", stock:0.10, full:1, cost:null}, // 10%
     {id:"salsa_san_luis", name:"Salsa San Luis 490 — falta costo", unit:"botella", stock:0.75, full:1, cost:null}, // 3/4
     {id:"salsa_tabasco", name:"Salsa Tabasco 500ml — falta confirmar cuántas botellas y costo", unit:"botella", stock:1, full:1, cost:null}, // "llenas" (en plural, ¿más de 1?)
     {id:"salsa_inglesa", name:"Salsa inglesa (Worcestershire) 300ml — falta costo", unit:"botella", stock:1, full:1, cost:null}, // confirmado 7-sep: 1 botella llena
     {id:"salsa_maggi", name:"Salsa Maggi — falta tamaño de botella y costo", unit:"botella", stock:0.5, full:1, cost:null}, // la mitad
     {id:"chile_de_pelon", name:"Chile de pelón — falta confirmar qué es exactamente, tamaño y costo", unit:"pza", stock:1, full:1, cost:null},
-    {id:"nieve_mango", name:"Nieve sabor mango (bote 5L)", unit:"L", stock:5, full:5, cost:50}, // compra 8-sep: 5L a $250 → $50/L
-    {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy (bote 5L)", unit:"L", stock:5, full:5, cost:50}, // compra 8-sep: 5L a $250 → $50/L
+    {id:"nieve_mango", name:"Nieve sabor mango — sin existencia", unit:"L", stock:0, full:5, cost:null},
+    {id:"nieve_mango_chamoy", name:"Nieve sabor mango con chamoy — sin existencia", unit:"L", stock:0, full:5, cost:null},
     {id:"botanera", name:"Botanera — falta costo", unit:"kg", stock:1.585, full:1.585, cost:null}, // conteo 7-sep: 4 botes en total — 2 con 810g y 775g, 2 ya vacíos
-    {id:"elote_desgranado", name:"Elote desgranado", unit:"kg", stock:18, full:15, cost:70}, // stock 8 + compra 8-sep 10kg/$700 → $70/kg
+    {id:"elote_desgranado", name:"Elote desgranado — falta cantidad para el Whimix Elote Bowl y el costo", unit:"kg", stock:8, full:15, cost:null}, // 8 bolsas de 1kg. Barra de resupply puesta en 15kg (7-sep)
     {id:"frappe_cafe", name:"Polvo frappé Café — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_mocha", name:"Polvo frappé Mocha — falta costo", unit:"kg", stock:1, full:1, cost:null},
     {id:"frappe_vainilla", name:"Polvo frappé Vainilla — falta costo", unit:"kg", stock:1, full:1, cost:null},
@@ -848,22 +848,22 @@
     {id:"nieve_fresa", name:"Nieve sabor fresa (bote 25L) — falta costo", unit:"L", stock:25, full:25, cost:null},
     {id:"nieve_chamoy_grande", name:"Nieve sabor chamoy (bote 25L) — falta costo", unit:"L", stock:25, full:25, cost:null},
     {id:"agua_insumo_frappe", name:"Agua para frappés (insumo, 1 garrafón ≈19L) — sin existencia", unit:"L", stock:0, full:19, cost:null},
+    {id:"agua_insumo_smoothie", name:"Agua natural (botella 1L, insumo para smoothies)", unit:"L", stock:1, full:1, cost:21}, // comprada 8-sep
   ];
 
   // Recetas: solo se meten aquí las cantidades que ya confirmaste. Elote Grande/
   // Mediano ya tienen su elote_desgranado (calculado por volumen de vaso, 85%
-  // grano). Whimix Elote Bowl usa la misma cantidad de elote que el mediano
-  // (confirmado 8-sep). Lo pendiente (papas de los bowls, fruit bowl, nieves,
-  // otros frappés) se deja sin receta a propósito — así no se descuenta
-  // inventario con un número inventado.
+  // grano). Lo que sigue pendiente (elote del Whimix Elote Bowl, papas de los
+  // bowls, fruit bowl, nieves, otros frappés) se deja sin receta a propósito —
+  // así no se descuenta inventario con un número inventado.
   const CAPITA_KG = 0.02;      // 1 "capita" de mayonesa/crema ≈ 20g (estimado, confírmalo)
   const CUCHARADA_KG = 0.015;  // 1 cucharada de queso ≈ 15g (estimado, confírmalo)
   const VASO_HIELO_KG = 0.3;   // "1 vaso de hielo" ≈ 300g (estimado, confírmalo)
   const recipes = {
     elote_grande: {elote_desgranado:0.279, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_16oz:1, cuchara:1}, // 279g = vaso 16oz al 85% de puro grano (0.693 g/mL)
     elote_mediano: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, vaso_12oz:1, cuchara:1}, // 209g = vaso 12oz al 85% de puro grano
-    // mismas cantidades de mayo/crema/queso que el elote; elote = mismo que mediano (8-sep); falta papa
-    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // 209g = misma cantidad que elote mediano
+    // mismas cantidades de mayo/crema/queso que el elote — falta la cantidad de elote y de papa
+    whimix_elote: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG}, // falta cuánto elote_desgranado lleva — ¿en qué tamaño de recipiente se sirve?
     whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
     smoothie_cocoa: {hielo:VASO_HIELO_KG, platano:2.5, vasos:1, tapas:1, popotes:1},
     smoothie_mangonada: {hielo:VASO_HIELO_KG, fruta_mango:.15, azucar:.02, chamoy:.01, vasos:1, tapas:1, popotes:1},
@@ -933,10 +933,9 @@
       {date:"2026-09-07", name:"Coca Cola light (4 latas a $22)", amount:88},
       {date:"2026-09-07", name:"Coca Cola normal (4 latas a $23)", amount:92},
       {date:"2026-09-07", name:"Agua natural (24 botellas)", amount:84},
-      {date:"2026-09-08", name:"Nieve mango (5L)", amount:250},
-      {date:"2026-09-08", name:"Nieve mango con chamoy (5L)", amount:250},
-      {date:"2026-09-08", name:"Botes", amount:200},
-      {date:"2026-09-08", name:"Elote desgranado (10kg)", amount:700},
+      {date:"2026-09-08", name:"Hielo, agua, bowls y tapas (100 bowls, 50+50 tapas)", amount:630},
+      {date:"2026-09-08", name:"Banderillas (45) + Salsa Valentina", amount:147},
+      {date:"2026-09-08", name:"Queso rallado, queso amarillo y mayonesa", amount:1046},
     ],
   };
   function realExpensesForMonth(mk){
