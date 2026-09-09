@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T17:24:54.409490+00:00",
+ "generated_at": "2026-09-09T17:38:22.045855+00:00",
  "today_local": "2026-09-09",
  "dailySales": {
   "2026-06-08": {
@@ -712,18 +712,18 @@
   },
   "2026-09-09": {
    "kind": "local",
-   "total": 30,
+   "total": 90,
    "items": [
     {
      "n": "Coca cola",
-     "q": 1,
-     "r": 30
+     "q": 3,
+     "r": 90
     }
    ]
   }
  },
  "todaySales": {
-  "coca_cola": 1
+  "coca_cola": 3
  },
  "trend": [
   395,
@@ -732,7 +732,7 @@
   0,
   1230,
   1635,
-  30
+  90
  ],
  "trendTags": [
   null,
