@@ -786,10 +786,11 @@
     {id:"vaso_16oz", name:"Vaso 16oz (elote/nieve grande)", unit:"pza", stock:850, full:1000, cost:1.5},
     {id:"vaso_12oz", name:"Vaso 12oz (elote/nieve mediana)", unit:"pza", stock:700, full:1000, cost:1.2},
     {id:"cuchara", name:"Cuchara desechable", unit:"pza", stock:175, full:300, cost:0.4}, // conteo 7-sep: 7 paquetes de 25
-    {id:"papa", name:"Papa (presentación grande) — falta cantidad por receta", unit:"kg", stock:1.5, full:5, cost:20},
-    {id:"fruta_mixta", name:"Fruta mixta (fruit bowl)", unit:"kg", stock:0, full:2, cost:45}, // sin existencia ahorita
+    {id:"papa", name:"Papa (presentación grande) — falta cantidad por receta y kg de compra 9-sep", unit:"kg", stock:1.5, full:5, cost:20}, // compra 9-sep $764 — falta cuántos kg para sumar stock/costo
+    {id:"fruta_mixta", name:"Fruta mixta (fruit bowl)", unit:"kg", stock:4, full:4, cost:null}, // compra 9-sep: +4kg (costo en lote fruta+gomitas+jícama $275 — falta prorrateo)
     {id:"chamoy", name:"Chamoy", unit:"kg", stock:1, full:2, cost:80},           // confirmado 7-sep: 1kg
-    {id:"gomitas", name:"Gomitas — falta stock", unit:"kg", stock:0.4, full:0.5, cost:90},
+    {id:"gomitas", name:"Gomitas enchiladas", unit:"kg", stock:0.6, full:0.6, cost:null}, // +0.2kg 9-sep (lote $275 con fruta/jícama — falta prorrateo); antes 0.4
+    {id:"jicama_deshidratada", name:"Jícama deshidratada", unit:"kg", stock:0.2, full:0.2, cost:null}, // compra 9-sep 200g (lote $275 con fruta/gomitas — falta prorrateo)
     {id:"hielo", name:"Hielo en bolsa (5kg c/u)", unit:"kg", stock:7.5, full:10, cost:10}, // +1 bolsa de 5kg por $50 (8-sep) = $10/kg
     {id:"azucar", name:"Azúcar — falta cantidad por receta exacta", unit:"kg", stock:2, full:1, cost:24}, // conteo 7-sep: 2kg
     {id:"leche", name:"Leche", unit:"L", stock:3, full:5, cost:22},             // +2 compradas 8-sep — falta el precio de esta compra
@@ -804,8 +805,8 @@
     {id:"vasos", name:"Vaso smoothie 16oz", unit:"pza", stock:110, full:100, cost:1.1}, // conteo 7-sep: 110 — se separó del pool compartido con frappé (ver vasos_frappe)
     {id:"tapas", name:"Tapa smoothie", unit:"pza", stock:58, full:100, cost:0.8}, // +50 compradas 8-sep
     {id:"popotes", name:"Popote", unit:"pza", stock:300, full:500, cost:0.3}, // confirmado 7-sep: ~300
-    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:8, full:24, cost:23}, // +4 compradas 7-sep a $23 c/u
-    {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:4, full:24, cost:22}, // 4 compradas 7-sep a $22 c/u
+    {id:"coca_cola_normal", name:"Coca Cola normal (lata)", unit:"pza", stock:10, full:24, cost:23}, // +2 compradas 9-sep a $23 c/u
+    {id:"coca_cola_light", name:"Coca Cola light (lata)", unit:"pza", stock:6, full:24, cost:22}, // +2 compradas 9-sep a $22 c/u
     {id:"agua_natural_botella", name:"Agua natural (botella) — el 5 base sigue sin confirmar, pero +24 compradas 7-sep son reales", unit:"pza", stock:29, full:24, cost:3.5}, // 24 botellas por $84 total = $3.5 c/u
     // ---------- Conteo del 7-sep (dictado completo) ----------
     {id:"mantequilla", name:"Mantequilla (bote 775g) — falta costo", unit:"pza", stock:3, full:3, cost:null}, // 3 botes de 775g
@@ -952,6 +953,11 @@
       {date:"2026-09-08", name:"Nieve mango con chamoy (5L)", amount:250},
       {date:"2026-09-08", name:"Botes", amount:200},
       {date:"2026-09-08", name:"Elote desgranado (10kg)", amount:700},
+      {date:"2026-09-09", name:"Coca Cola light (2 latas a $22)", amount:44},
+      {date:"2026-09-09", name:"Coca Cola normal (2 latas a $23)", amount:46},
+      {date:"2026-09-09", name:"Pegamento para el menú", amount:86},
+      {date:"2026-09-09", name:"Papas", amount:764},
+      {date:"2026-09-09", name:"Fruta 4kg + gomitas enchiladas 200g + jícama deshidratada 200g", amount:275},
     ],
   };
   function realExpensesForMonth(mk){
