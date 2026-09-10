@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T16:25:35.456714+00:00",
+ "generated_at": "2026-09-10T16:38:21.598784+00:00",
  "today_local": "2026-09-10",
  "dailySales": {
   "2026-06-08": {
@@ -740,9 +740,22 @@
      "r": 60
     }
    ]
+  },
+  "2026-09-10": {
+   "kind": "local",
+   "total": 170,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 2,
+     "r": 170
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "whimix_elote": 2
+ },
  "trend": [
   690,
   0,
@@ -750,7 +763,7 @@
   1230,
   1635,
   1130,
-  0
+  170
  ],
  "trendTags": [
   null,
