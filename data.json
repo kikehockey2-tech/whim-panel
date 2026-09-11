@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T02:07:00.893441+00:00",
+ "generated_at": "2026-09-11T02:25:29.386929+00:00",
  "today_local": "2026-09-10",
  "dailySales": {
   "2026-06-08": {
@@ -743,12 +743,12 @@
   },
   "2026-09-10": {
    "kind": "local",
-   "total": 1035,
+   "total": 1120,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 4,
-     "r": 340
+     "q": 5,
+     "r": 425
     },
     {
      "n": "Nieve mediana",
@@ -794,7 +794,7 @@
   }
  },
  "todaySales": {
-  "whimix_elote": 4,
+  "whimix_elote": 5,
   "agua_natural": 2,
   "coca_cola": 2,
   "nieve_mediana": 3,
@@ -810,7 +810,7 @@
   1230,
   1635,
   1130,
-  1035
+  1120
  ],
  "trendTags": [
   null,
