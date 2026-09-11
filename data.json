@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T23:05:54.362648+00:00",
+ "generated_at": "2026-09-11T23:21:56.786950+00:00",
  "today_local": "2026-09-11",
  "dailySales": {
   "2026-06-08": {
@@ -794,7 +794,7 @@
   },
   "2026-09-11": {
    "kind": "local",
-   "total": 295,
+   "total": 325,
    "items": [
     {
      "n": "nieve grande",
@@ -812,24 +812,24 @@
      "r": 65
     },
     {
-     "n": "Agua Natural",
-     "q": 3,
+     "n": "Coca cola",
+     "q": 2,
      "r": 60
     },
     {
-     "n": "Coca cola",
-     "q": 1,
-     "r": 30
+     "n": "Agua Natural",
+     "q": 3,
+     "r": 60
     }
    ]
   }
  },
  "todaySales": {
+  "coca_cola": 2,
   "agua_natural": 3,
   "elote_mediano": 1,
   "nieve_grande": 1,
-  "whimix_fruit": 1,
-  "coca_cola": 1
+  "whimix_fruit": 1
  },
  "trend": [
   0,
@@ -838,7 +838,7 @@
   1635,
   1130,
   1120,
-  295
+  325
  ],
  "trendTags": [
   "cerrado",
