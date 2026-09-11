@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T20:51:55.706940+00:00",
+ "generated_at": "2026-09-11T21:06:52.948236+00:00",
  "today_local": "2026-09-11",
  "dailySales": {
   "2026-06-08": {
@@ -794,28 +794,34 @@
   },
   "2026-09-11": {
    "kind": "local",
-   "total": 120,
+   "total": 210,
    "items": [
+    {
+     "n": "nieve grande",
+     "q": 1,
+     "r": 70
+    },
     {
      "n": "Whimix Fruit Bowl",
      "q": 1,
      "r": 70
     },
     {
+     "n": "Agua Natural",
+     "q": 2,
+     "r": 40
+    },
+    {
      "n": "Coca cola",
      "q": 1,
      "r": 30
-    },
-    {
-     "n": "Agua Natural",
-     "q": 1,
-     "r": 20
     }
    ]
   }
  },
  "todaySales": {
-  "agua_natural": 1,
+  "agua_natural": 2,
+  "nieve_grande": 1,
   "whimix_fruit": 1,
   "coca_cola": 1
  },
@@ -826,7 +832,7 @@
   1635,
   1130,
   1120,
-  120
+  210
  ],
  "trendTags": [
   "cerrado",
