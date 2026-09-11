@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T19:23:03.560306+00:00",
+ "generated_at": "2026-09-11T19:35:54.935797+00:00",
  "today_local": "2026-09-11",
  "dailySales": {
   "2026-06-08": {
@@ -794,7 +794,7 @@
   },
   "2026-09-11": {
    "kind": "local",
-   "total": 100,
+   "total": 120,
    "items": [
     {
      "n": "Whimix Fruit Bowl",
@@ -805,11 +805,17 @@
      "n": "Coca cola",
      "q": 1,
      "r": 30
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
     }
    ]
   }
  },
  "todaySales": {
+  "agua_natural": 1,
   "whimix_fruit": 1,
   "coca_cola": 1
  },
@@ -820,7 +826,7 @@
   1635,
   1130,
   1120,
-  100
+  120
  ],
  "trendTags": [
   "cerrado",
