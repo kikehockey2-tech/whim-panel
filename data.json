@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-12T01:50:06.187228+00:00",
+ "generated_at": "2026-09-12T02:07:21.082447+00:00",
  "today_local": "2026-09-11",
  "dailySales": {
   "2026-06-08": {
@@ -794,12 +794,12 @@
   },
   "2026-09-11": {
    "kind": "local",
-   "total": 525,
+   "total": 590,
    "items": [
     {
      "n": "Elote Mediano",
-     "q": 3,
-     "r": 195
+     "q": 4,
+     "r": 260
     },
     {
      "n": "Elote Grande",
@@ -830,7 +830,7 @@
   }
  },
  "todaySales": {
-  "elote_mediano": 3,
+  "elote_mediano": 4,
   "elote_grande": 1,
   "coca_cola": 2,
   "agua_natural": 3,
@@ -844,7 +844,7 @@
   1635,
   1130,
   1120,
-  525
+  590
  ],
  "trendTags": [
   "cerrado",
