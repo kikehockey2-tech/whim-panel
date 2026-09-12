@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T23:49:10.849092+00:00",
+ "generated_at": "2026-09-12T00:09:21.425743+00:00",
  "today_local": "2026-09-11",
  "dailySales": {
   "2026-06-08": {
@@ -794,8 +794,13 @@
   },
   "2026-09-11": {
    "kind": "local",
-   "total": 325,
+   "total": 395,
    "items": [
+    {
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
+    },
     {
      "n": "nieve grande",
      "q": 1,
@@ -825,6 +830,7 @@
   }
  },
  "todaySales": {
+  "elote_grande": 1,
   "coca_cola": 2,
   "agua_natural": 3,
   "elote_mediano": 1,
@@ -838,7 +844,7 @@
   1635,
   1130,
   1120,
-  325
+  395
  ],
  "trendTags": [
   "cerrado",
