@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-13T05:49:21.827485+00:00",
- "today_local": "2026-09-12",
+ "generated_at": "2026-09-13T06:12:15.610867+00:00",
+ "today_local": "2026-09-13",
  "dailySales": {
   "2026-06-08": {
    "kind": "local",
@@ -831,21 +831,21 @@
  },
  "todaySales": {},
  "trend": [
-  0,
   1230,
   1635,
   1130,
   1120,
   590,
+  0,
   0
  ],
  "trendTags": [
+  null,
+  null,
+  null,
+  null,
+  null,
   "cerrado",
-  null,
-  null,
-  null,
-  null,
-  null,
   "cerrado"
  ],
  "weeklySales": {
