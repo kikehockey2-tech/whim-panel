@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T21:24:35.969353+00:00",
+ "generated_at": "2026-09-14T21:38:39.375493+00:00",
  "today_local": "2026-09-14",
  "dailySales": {
   "2026-06-08": {
@@ -830,8 +830,13 @@
   },
   "2026-09-14": {
    "kind": "local",
-   "total": 315,
+   "total": 435,
    "items": [
+    {
+     "n": "Nieve mediana",
+     "q": 3,
+     "r": 180
+    },
     {
      "n": "Smoothie Mangonada",
      "q": 2,
@@ -843,11 +848,6 @@
      "r": 85
     },
     {
-     "n": "Nieve mediana",
-     "q": 1,
-     "r": 60
-    },
-    {
      "n": "Coca cola",
      "q": 1,
      "r": 30
@@ -856,9 +856,9 @@
   }
  },
  "todaySales": {
+  "nieve_mediana": 3,
   "whimix_elote": 1,
   "smoothie_mangonada": 2,
-  "nieve_mediana": 1,
   "coca_cola": 1
  },
  "trend": [
@@ -868,7 +868,7 @@
   590,
   0,
   0,
-  315
+  435
  ],
  "trendTags": [
   null,
