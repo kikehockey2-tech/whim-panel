@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T17:52:23.921987+00:00",
+ "generated_at": "2026-09-14T18:08:02.426355+00:00",
  "today_local": "2026-09-14",
  "dailySales": {
   "2026-06-08": {
@@ -830,8 +830,13 @@
   },
   "2026-09-14": {
    "kind": "local",
-   "total": 30,
+   "total": 90,
    "items": [
+    {
+     "n": "Nieve mediana",
+     "q": 1,
+     "r": 60
+    },
     {
      "n": "Coca cola",
      "q": 1,
@@ -841,6 +846,7 @@
   }
  },
  "todaySales": {
+  "nieve_mediana": 1,
   "coca_cola": 1
  },
  "trend": [
@@ -850,7 +856,7 @@
   590,
   0,
   0,
-  30
+  90
  ],
  "trendTags": [
   null,
