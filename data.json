@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-14T05:52:06.059045+00:00",
- "today_local": "2026-09-13",
+ "generated_at": "2026-09-14T06:10:03.906409+00:00",
+ "today_local": "2026-09-14",
  "dailySales": {
   "2026-06-08": {
    "kind": "local",
@@ -831,11 +831,11 @@
  },
  "todaySales": {},
  "trend": [
-  1230,
   1635,
   1130,
   1120,
   590,
+  0,
   0,
   0
  ],
@@ -844,9 +844,9 @@
   null,
   null,
   null,
-  null,
   "cerrado",
-  "cerrado"
+  "cerrado",
+  null
  ],
  "weeklySales": {
   "elote_mediano": 13.5,
