@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-15T20:07:29.506223+00:00",
+ "generated_at": "2026-09-15T20:24:22.241725+00:00",
  "today_local": "2026-09-15",
  "dailySales": {
   "2026-06-08": {
@@ -861,12 +861,17 @@
   },
   "2026-09-15": {
    "kind": "local",
-   "total": 850,
+   "total": 1060,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 6,
-     "r": 510
+     "q": 7,
+     "r": 595
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
     },
     {
      "n": "Smoothie Piñacoco",
@@ -884,9 +889,9 @@
      "r": 70
     },
     {
-     "n": "Elote Mediano",
+     "n": "Nieve mediana",
      "q": 1,
-     "r": 65
+     "r": 60
     },
     {
      "n": "Coca cola",
@@ -897,11 +902,12 @@
   }
  },
  "todaySales": {
+  "nieve_mediana": 1,
+  "whimix_elote": 7,
+  "elote_mediano": 2,
   "elote_grande": 1,
-  "whimix_elote": 6,
   "coca_cola": 2,
   "smoothie_pinacoco": 1,
-  "elote_mediano": 1,
   "smoothie_mangonada": 1
  },
  "trend": [
@@ -911,7 +917,7 @@
   0,
   0,
   995,
-  850
+  1060
  ],
  "trendTags": [
   null,
