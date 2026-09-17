@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T19:09:26.959650+00:00",
+ "generated_at": "2026-09-17T19:23:20.436367+00:00",
  "today_local": "2026-09-17",
  "dailySales": {
   "2026-06-08": {
@@ -912,8 +912,13 @@
   },
   "2026-09-17": {
    "kind": "local",
-   "total": 70,
+   "total": 140,
    "items": [
+    {
+     "n": "nieve grande",
+     "q": 1,
+     "r": 70
+    },
     {
      "n": "Whimix Fruit Bowl",
      "q": 1,
@@ -923,6 +928,7 @@
   }
  },
  "todaySales": {
+  "nieve_grande": 1,
   "whimix_fruit": 1
  },
  "trend": [
@@ -932,7 +938,7 @@
   995,
   2490,
   0,
-  70
+  140
  ],
  "trendTags": [
   null,
