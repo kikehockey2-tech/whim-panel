@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T17:22:17.875312+00:00",
+ "generated_at": "2026-09-17T17:37:05.524587+00:00",
  "today_local": "2026-09-17",
  "dailySales": {
   "2026-06-08": {
@@ -909,9 +909,22 @@
      "r": 60
     }
    ]
+  },
+  "2026-09-17": {
+   "kind": "local",
+   "total": 70,
+   "items": [
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 1,
+     "r": 70
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "whimix_fruit": 1
+ },
  "trend": [
   590,
   0,
@@ -919,7 +932,7 @@
   995,
   2490,
   0,
-  0
+  70
  ],
  "trendTags": [
   null,
