@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T17:22:06.926579+00:00",
+ "generated_at": "2026-09-18T17:34:24.074481+00:00",
  "today_local": "2026-09-18",
  "dailySales": {
   "2026-06-08": {
@@ -945,9 +945,22 @@
      "r": 70
     }
    ]
+  },
+  "2026-09-18": {
+   "kind": "local",
+   "total": 70,
+   "items": [
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "smoothie_mangonada": 1
+ },
  "trend": [
   0,
   0,
@@ -955,7 +968,7 @@
   2490,
   0,
   1400,
-  0
+  70
  ],
  "trendTags": [
   "cerrado",
