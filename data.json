@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T19:34:33.704963+00:00",
+ "generated_at": "2026-09-18T19:48:57.307517+00:00",
  "today_local": "2026-09-18",
  "dailySales": {
   "2026-06-08": {
@@ -948,17 +948,22 @@
   },
   "2026-09-18": {
    "kind": "local",
-   "total": 695,
+   "total": 930,
    "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 4,
+     "r": 340
+    },
     {
      "n": "Smoothie Mangonada",
      "q": 4,
      "r": 280
     },
     {
-     "n": "Whimix Elote Bowl",
-     "q": 3,
-     "r": 255
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
     },
     {
      "n": "Coca cola",
@@ -969,15 +974,22 @@
      "n": "Smoothie Limon/Fresa",
      "q": 1,
      "r": 70
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
     }
    ]
   }
  },
  "todaySales": {
+  "elote_mediano": 2,
+  "agua_natural": 1,
+  "whimix_elote": 4,
   "smoothie_limonfresa": 1,
   "smoothie_mangonada": 4,
-  "coca_cola": 3,
-  "whimix_elote": 3
+  "coca_cola": 3
  },
  "trend": [
   0,
@@ -986,7 +998,7 @@
   2490,
   0,
   1400,
-  695
+  930
  ],
  "trendTags": [
   "cerrado",
