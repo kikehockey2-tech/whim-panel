@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T19:22:50.139355+00:00",
+ "generated_at": "2026-09-18T19:34:33.704963+00:00",
  "today_local": "2026-09-18",
  "dailySales": {
   "2026-06-08": {
@@ -948,7 +948,7 @@
   },
   "2026-09-18": {
    "kind": "local",
-   "total": 625,
+   "total": 695,
    "items": [
     {
      "n": "Smoothie Mangonada",
@@ -964,11 +964,17 @@
      "n": "Coca cola",
      "q": 3,
      "r": 90
+    },
+    {
+     "n": "Smoothie Limon/Fresa",
+     "q": 1,
+     "r": 70
     }
    ]
   }
  },
  "todaySales": {
+  "smoothie_limonfresa": 1,
   "smoothie_mangonada": 4,
   "coca_cola": 3,
   "whimix_elote": 3
@@ -980,7 +986,7 @@
   2490,
   0,
   1400,
-  625
+  695
  ],
  "trendTags": [
   "cerrado",
