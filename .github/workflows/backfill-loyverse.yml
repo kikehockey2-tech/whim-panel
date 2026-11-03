@@ -1,6 +1,14 @@
 name: Backend histórico Loyverse (diario)
 
 on:
+  # Disparo de una sola vez para validar el backfill en esta rama.
+  # No reacciona al commit de data/whim.db. Se quita antes de mergear.
+  push:
+    branches:
+      - cursor/loyverse-historical-backend-ba1f
+    paths:
+      - scripts/backfill_loyverse.py
+      - .github/workflows/backfill-loyverse.yml
   schedule:
     # 09:00 UTC = 03:00 America/Monterrey (UTC-6, sin horario de verano).
     - cron: "0 9 * * *"
