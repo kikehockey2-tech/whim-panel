@@ -1,30 +1,20 @@
 {
- "generated_at": "2026-11-03T12:40:14.104270+00:00",
+ "generated_at": "2026-11-03T19:48:23.215147+00:00",
  "today_local": "2026-11-03",
  "dailySales": {
   "2026-09-18": {
    "kind": "local",
-   "total": 1550,
+   "total": 620,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 8,
-     "r": 680
-    },
-    {
-     "n": "Smoothie Mangonada",
      "q": 4,
-     "r": 280
+     "r": 340
     },
     {
      "n": "Elote Mediano",
-     "q": 4,
-     "r": 260
-    },
-    {
-     "n": "Coca cola",
-     "q": 5,
-     "r": 150
+     "q": 2,
+     "r": 130
     },
     {
      "n": "nieve grande",
@@ -32,14 +22,14 @@
      "r": 70
     },
     {
-     "n": "Smoothie Limon/Fresa",
-     "q": 1,
-     "r": 70
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
     },
     {
      "n": "Agua Natural",
-     "q": 2,
-     "r": 40
+     "q": 1,
+     "r": 20
     }
    ]
   },
@@ -1253,7 +1243,7 @@
   },
   "2026-11-02": {
    "kind": "local",
-   "total": 1005,
+   "total": 1055,
    "items": [
     {
      "n": "Whimix Elote Bowl",
@@ -1267,8 +1257,13 @@
     },
     {
      "n": "Coca cola",
-     "q": 3,
-     "r": 90
+     "q": 4,
+     "r": 120
+    },
+    {
+     "n": "Agua Natural",
+     "q": 4,
+     "r": 80
     },
     {
      "n": "Whimix Fruit Bowl",
@@ -1281,27 +1276,41 @@
      "r": 70
     },
     {
-     "n": "Agua Natural",
-     "q": 3,
-     "r": 60
-    },
-    {
      "n": "Nieve mediana",
      "q": 1,
      "r": 50
     }
    ]
+  },
+  "2026-11-03": {
+   "kind": "local",
+   "total": 105,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 1,
+     "r": 85
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "agua_natural": 1,
+  "whimix_elote": 1
+ },
  "trend": [
   465,
   665,
   40,
   11740,
   22870,
-  1005,
-  0
+  1055,
+  105
  ],
  "trendTags": [
   null,
@@ -1315,10 +1324,10 @@
  "weeklySales": {
   "whimix_elote": 17.2,
   "elote_mediano": 15.2,
-  "coca_cola": 4.0,
+  "coca_cola": 4.2,
+  "agua_natural": 7.2,
   "whimix_fruit": 2.8,
   "elote_grande": 7.5,
-  "agua_natural": 7.0,
   "nieve_mediana": 6.2,
   "smoothie_mangonada": 5.2,
   "nieve_grande": 2.2,
