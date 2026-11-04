@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T15:00:22.590014+00:00",
+ "generated_at": "2026-11-04T17:51:39.289486+00:00",
  "today_local": "2026-11-04",
  "dailySales": {
   "2026-06-08": {
@@ -2271,9 +2271,34 @@
      "r": 40
     }
    ]
+  },
+  "2026-11-04": {
+   "kind": "local",
+   "total": 140,
+   "items": [
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Nieve mediana",
+     "q": 1,
+     "r": 50
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "agua_natural": 1,
+  "nieve_mediana": 1,
+  "smoothie_mangonada": 1
+ },
  "trend": [
   665,
   40,
@@ -2281,7 +2306,7 @@
   22870,
   1055,
   1035,
-  0
+  140
  ],
  "trendTags": [
   null,
@@ -2306,24 +2331,33 @@
   "whimix_bowl": 0.2
  },
  "productCost": {
+  "elote_grande": 22.0,
+  "elote_mediano": 18.0,
+  "smoothie_mangonada": 0.0,
+  "whimix_bowl": 22.0,
+  "bowl_jicama": 0.0,
   "nieve_grande": 0.0,
   "nieve_mediana": 0.0,
   "brownie": 0.0,
   "galleta": 0.0,
+  "smoothie_myo": 0.0,
+  "smoothie_cocoa": 0.0,
   "smoothie_pinacoco": 0.0,
+  "smoothie_chocoplatano": 0.0,
   "smoothie_berries": 0.0,
+  "frappe_cafe": 0.0,
+  "frappe_mocha": 0.0,
+  "frappe_vainilla": 0.0,
+  "frappe_chocolate": 0.0,
+  "frappe_chai": 0.0,
   "para_llevar": 45.0,
   "agua_natural": 8.0,
   "powerade": 22.0,
   "coca_cola": 18.0,
   "aguas_frescas": 0.0,
   "matcha": 30.0,
-  "smoothie_mangonada": 0.0,
   "smoothie_limonfresa": 18.0,
   "whimix_fruit": 20.0,
-  "whimix_elote": 32.0,
-  "elote_grande": 22.0,
-  "elote_mediano": 18.0,
-  "whimix_bowl": 22.0
+  "whimix_elote": 32.0
  }
 }
