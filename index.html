@@ -1217,14 +1217,19 @@
   // ---------- Render: KPIs ----------
   function renderKPIs(){
     const open = isLocalOpenToday();
-    const revToday = products.reduce((s,p)=> s + (p.price||0)*(todaySales[p.id]||0), 0);
+    // El total del día en data.json es el dinero real del ticket. Multiplicar
+    // el precio de lista por las unidades no cuadra cuando el POS cobró otro
+    // precio (hoy el agua salió en $20 y la nieve en $50).
+    const syncedToday = dailySales[localISODate(TODAY)];
+    const revToday = syncedToday ? syncedToday.total : 0;
+    const unitsToday = syncedToday ? syncedToday.items.reduce((a,it)=>a+(it.q||0),0) : 0;
 
     const heroEyebrow = document.querySelector(".hero-eyebrow");
     if(!open){
       if(heroEyebrow) heroEyebrow.textContent = "Local cerrado hoy";
       document.getElementById("kpiVentasHoy").textContent = "$0";
       document.getElementById("kpiVentasHoySub").textContent = "No abrimos sábados y domingos — hoy es tu día de Resupply";
-    } else if(Object.keys(todaySales).length === 0){
+    } else if(!syncedToday || !syncedToday.total){
       // El sync ya corrió y Loyverse no tiene ventas de hoy, o la página
       // sigue con la foto guardada en el HTML porque data.json no cargó.
       if(heroEyebrow) heroEyebrow.textContent = "Hoy";
@@ -1235,7 +1240,7 @@
     } else {
       if(heroEyebrow) heroEyebrow.textContent = "Hoy se vendió";
       document.getElementById("kpiVentasHoy").textContent = fmtMoney(revToday);
-      document.getElementById("kpiVentasHoySub").textContent = Object.values(todaySales).reduce((a,b)=>a+b,0)+" productos vendidos";
+      document.getElementById("kpiVentasHoySub").textContent = unitsToday+" productos vendidos";
     }
     // "Ventas semanales" es desde el lunes de ESTA semana hasta hoy — no los
     // últimos 7 días corridos (eso, si hoy es lunes, mayormente son ventas de
