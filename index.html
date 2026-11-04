@@ -718,12 +718,22 @@
 (function(){
   "use strict";
 
-  // ---------- "Today" — la fecha real del calendario, siempre. Las ventas
-  // reales solo llegan hasta donde Enrique me las haya dado (jaladas de
-  // Loyverse el 6 sep 2026, o lo que se agregue después a mano); los días
-  // más allá de eso simplemente no tienen ventas registradas todavía. ----------
-  const TODAY = new Date();
-  TODAY.setHours(0,0,0,0);
+  // ---------- "Today" — el día calendario en Monterrey, no el del navegador.
+  // El sync guarda las ventas en hora del local (UTC-6, sin horario de
+  // verano). Si el teléfono está en otra zona, el panel igual pregunta por
+  // el día de la tienda. ----------
+  function monterreyToday(){
+    const parts = new Intl.DateTimeFormat("en-CA",{timeZone:"America/Monterrey",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+    const get = t => +parts.find(p=>p.type===t).value;
+    return new Date(get("year"), get("month")-1, get("day"));
+  }
+  function localISODate(d){
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,"0");
+    const day = String(d.getDate()).padStart(2,"0");
+    return y+"-"+m+"-"+day;
+  }
+  const TODAY = monterreyToday();
   const MS_DAY = 86400000;
   const fmtMoney = n => n==null ? "-" : "$" + n.toLocaleString("es-MX",{minimumFractionDigits:0,maximumFractionDigits:0});
   const fmtMoney2 = n => n==null ? "-" : "$" + n.toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -890,6 +900,7 @@
   // convertido a hora de Monterrey UTC-6 — Loyverse entrega todo en UTC, y sin esa
   // conversión las ventas de la noche se contaban en el día equivocado).
   // Los productos que no aparecen aquí no han tenido ventas registradas todavía.
+  let liveLoaded = false;
   let weeklySales = {
     elote_grande:4, elote_mediano:12, whimix_elote:16, whimix_fruit:1, whimix_bowl:.8,
     nieve_grande:.3, nieve_mediana:.3, smoothie_mangonada:3.7, smoothie_limonfresa:2.6,
@@ -1053,7 +1064,7 @@
   function isLocalOpenToday(){
     const wd = TODAY.getDay(); // 0=Dom, 6=Sáb — el local no abre fines de semana
     if(wd !== 0 && wd !== 6) return true;
-    const iso = TODAY.toISOString().slice(0,10);
+    const iso = localISODate(TODAY);
     return events.some(ev => ev.date === iso); // salvo que haya mercadito agendado hoy
   }
 
@@ -1085,13 +1096,29 @@
     daily.sort((a,b)=>a.day.localeCompare(b.day));
     return {local, mercadito, total:local+mercadito, items, daily};
   }
-  const PRODUCT_BY_NAME = {};
-  products.forEach(p=> PRODUCT_BY_NAME[p.name.toLowerCase()] = p);
+  const PRODUCT_BY_FOLD = {};
+  function foldSaleName(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+  products.forEach(p=>{
+    PRODUCT_BY_FOLD[foldSaleName(p.name)] = p;
+  });
+  // Mismos huecos que NAME_TO_ID en scripts/sync_loyverse.py: el POS escribe
+  // "Frappe Cafe" sin acento, "Elote Grande M" en mercadito y "Bowl Jicam dh"
+  // para el Bowl Jícama. Suerito y Smoothie Fresa no tienen producto en el panel.
+  const SALE_NAME_ALIASES = {"bowl jicam dh":"bowl jicama"};
+  function productBySaleName(name){
+    let key = foldSaleName(name);
+    if(SALE_NAME_ALIASES[key]) key = SALE_NAME_ALIASES[key];
+    if(PRODUCT_BY_FOLD[key]) return PRODUCT_BY_FOLD[key];
+    if(key.endsWith(" m")) return PRODUCT_BY_FOLD[key.slice(0,-2).trim()] || null;
+    return null;
+  }
   function realVariableCostForMonth(mk){
     const {items} = computeMonthSummary(mk);
     let cost = 0;
     Object.entries(items).forEach(([name,[qty]])=>{
-      const p = PRODUCT_BY_NAME[name.toLowerCase()];
+      const p = productBySaleName(name);
       if(p) cost += costOf(p)*qty;
     });
     return cost;
@@ -1198,11 +1225,13 @@
       document.getElementById("kpiVentasHoy").textContent = "$0";
       document.getElementById("kpiVentasHoySub").textContent = "No abrimos sábados y domingos — hoy es tu día de Resupply";
     } else if(Object.keys(todaySales).length === 0){
-      // Día abierto, pero todavía no me has pasado las ventas de hoy —
-      // distinto de "vendiste $0", que sería un cierre real.
+      // El sync ya corrió y Loyverse no tiene ventas de hoy, o la página
+      // sigue con la foto guardada en el HTML porque data.json no cargó.
       if(heroEyebrow) heroEyebrow.textContent = "Hoy";
-      document.getElementById("kpiVentasHoy").textContent = "-";
-      document.getElementById("kpiVentasHoySub").textContent = "Aún no me pasas las ventas de hoy";
+      document.getElementById("kpiVentasHoy").textContent = liveLoaded ? fmtMoney(0) : "-";
+      document.getElementById("kpiVentasHoySub").textContent = liveLoaded
+        ? "Loyverse no tiene ventas hoy todavía"
+        : "Sin data.json en vivo — esta foto no trae las ventas de hoy";
     } else {
       if(heroEyebrow) heroEyebrow.textContent = "Hoy se vendió";
       document.getElementById("kpiVentasHoy").textContent = fmtMoney(revToday);
@@ -1215,7 +1244,7 @@
     const monday = new Date(TODAY.getTime() - daysSinceMonday*MS_DAY);
     let weekToDate = 0;
     for(let d=new Date(monday); d<=TODAY; d=new Date(d.getTime()+MS_DAY)){
-      weekToDate += (dailySales[d.toISOString().slice(0,10)]||{}).total || 0;
+      weekToDate += (dailySales[localISODate(d)]||{}).total || 0;
     }
     document.getElementById("kpiVentasSemana").textContent = fmtMoney(weekToDate);
     document.getElementById("kpiCostosMes").textContent = fmtMoney(realSpentForMonth(CURRENT_MONTH_KEY));
@@ -1319,7 +1348,7 @@
     Object.entries(dailySales).forEach(([day, d]) => {
       if(day < STOCK_BASELINE) return; // el conteo fue antes de abrir, así que las ventas de ese mismo día ya cuentan
       d.items.forEach(it => {
-        const p = PRODUCT_BY_NAME[it.n.toLowerCase()];
+        const p = productBySaleName(it.n);
         if(!p) return;
         const qty = (recipes[p.id]||{})[ing.id];
         if(qty) consumed += qty * it.q;
@@ -1796,11 +1825,10 @@
   });
 
   // ---------- Datos en vivo ----------
-  // data.json lo genera solo, cada hora, un robot de GitHub Actions que le
-  // pregunta directo a Loyverse (scripts/sync_loyverse.py). Si por lo que
-  // sea no carga (sin internet, primer segundo antes de que exista el
-  // archivo, etc.), la página sigue funcionando con la última foto que
-  // quedó escrita aquí arriba, para que nunca se vea vacía.
+  // data.json lo escribe GitHub Actions (scripts/sync_loyverse.py). Si no
+  // carga, la página sigue con la última foto de aquí arriba. todaySales y
+  // weeklySales se usan tal cual vienen en el archivo: el script ya resolvió
+  // los nombres del POS al id del panel.
   async function loadLiveData(){
     const syncBadge = document.getElementById("syncBadge");
     const syncBadgeText = document.getElementById("syncBadgeText");
@@ -1808,7 +1836,10 @@
       const res = await fetch("data.json?v=" + Date.now());
       if(!res.ok) throw new Error("data.json " + res.status);
       const live = await res.json();
-      if(live.dailySales) dailySales = live.dailySales;
+      // La foto embebida cubre junio–inicio de septiembre. data.json trae
+      // la ventana reciente y conserva los días viejos que ya no caben en
+      // la consulta. Si un día está en los dos, gana Loyverse.
+      if(live.dailySales) dailySales = Object.assign({}, dailySales, live.dailySales);
       if(live.todaySales) todaySales = live.todaySales;
       if(live.trend) trend = live.trend;
       if(live.trendTags) trendTags = live.trendTags;
@@ -1816,8 +1847,9 @@
       if(live.productCost){
         products.forEach(p => { if(live.productCost[p.id] != null) p.loyCost = live.productCost[p.id]; });
       }
+      liveLoaded = true;
       if(syncBadgeText){
-        const when = new Date(live.generated_at).toLocaleString("es-MX",{hour:"numeric",minute:"2-digit",day:"numeric",month:"short"});
+        const when = new Date(live.generated_at).toLocaleString("es-MX",{hour:"numeric",minute:"2-digit",day:"numeric",month:"short",timeZone:"America/Monterrey"});
         syncBadgeText.textContent = "Loyverse actualizado " + when;
       }
       if(syncBadge) syncBadge.hidden = false;
