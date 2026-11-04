@@ -1,6 +1,13 @@
 name: Sincronizar ventas de Loyverse
 
 on:
+  # Disparo de una sola vez para probar esta rama. paths-ignore evita que el
+  # commit de data.json vuelva a encender el workflow. Se quita antes de merge.
+  push:
+    branches:
+      - cursor/fix-loyverse-daily-sync-003b
+    paths-ignore:
+      - data.json
   schedule:
     # Frecuente. GitHub a menudo retrasa o descarta este cron (en la
     # práctica arranca unas pocas veces al día, no cada 15 minutos).
