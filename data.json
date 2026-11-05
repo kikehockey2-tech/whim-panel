@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-05T01:35:37.902781+00:00",
- "today_local": "2026-11-04",
+ "generated_at": "2026-11-05T08:29:58.951957+00:00",
+ "today_local": "2026-11-05",
  "dailySales": {
   "2026-09-21": {
    "kind": "local",
@@ -1289,7 +1289,7 @@
   },
   "2026-11-04": {
    "kind": "local",
-   "total": 1150,
+   "total": 1290,
    "items": [
     {
      "n": "Whimix Elote Bowl",
@@ -1302,14 +1302,19 @@
      "r": 300
     },
     {
+     "n": "Smoothie Mangonada",
+     "q": 3,
+     "r": 215
+    },
+    {
      "n": "Elote Grande",
      "q": 3,
      "r": 210
     },
     {
-     "n": "Smoothie Mangonada",
-     "q": 2,
-     "r": 145
+     "n": "Smoothie Limon/Fresa",
+     "q": 1,
+     "r": 70
     },
     {
      "n": "Agua Natural",
@@ -1324,22 +1329,15 @@
    ]
   }
  },
- "todaySales": {
-  "smoothie_mangonada": 2,
-  "elote_grande": 3,
-  "whimix_elote": 5,
-  "coca_cola": 1,
-  "nieve_mediana": 6,
-  "agua_natural": 2
- },
+ "todaySales": {},
  "trend": [
-  665,
   40,
   11740,
   22870,
   1055,
   1035,
-  1150
+  1290,
+  0
  ],
  "trendTags": [
   null,
@@ -1351,17 +1349,16 @@
   null
  ],
  "weeklySales": {
-  "elote_mediano": 15.5,
-  "whimix_elote": 16.2,
-  "elote_grande": 7.8,
-  "nieve_mediana": 7.0,
-  "coca_cola": 5.0,
-  "agua_natural": 7.8,
+  "whimix_elote": 16.5,
+  "nieve_mediana": 8.2,
+  "smoothie_mangonada": 5.8,
+  "elote_grande": 8.0,
+  "smoothie_limonfresa": 0.8,
+  "agua_natural": 8.0,
+  "coca_cola": 4.8,
+  "elote_mediano": 15.0,
   "whimix_fruit": 2.8,
-  "smoothie_mangonada": 5.0,
-  "nieve_grande": 2.0,
-  "smoothie_limonfresa": 1.0,
-  "whimix_bowl": 0.2
+  "nieve_grande": 2.0
  },
  "productCost": {
   "nieve_grande": 0.0,
