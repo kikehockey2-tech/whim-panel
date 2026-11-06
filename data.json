@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T09:53:24.902426+00:00",
+ "generated_at": "2026-11-06T17:05:56.569189+00:00",
  "today_local": "2026-11-06",
  "dailySales": {
   "2026-09-21": {
@@ -1388,9 +1388,28 @@
      "r": 60
     }
    ]
+  },
+  "2026-11-06": {
+   "kind": "local",
+   "total": 85,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "elote_mediano": 1,
+  "agua_natural": 1
+ },
  "trend": [
   11740,
   22870,
@@ -1398,7 +1417,7 @@
   1035,
   1290,
   1345,
-  0
+  85
  ],
  "trendTags": [
   null,
