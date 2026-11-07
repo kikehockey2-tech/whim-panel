@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-07T14:53:14.127043+00:00",
+ "generated_at": "2026-11-07T19:14:03.860043+00:00",
  "today_local": "2026-11-07",
  "dailySales": {
   "2026-09-22": {
    "kind": "local",
-   "total": 875,
+   "total": 845,
    "items": [
     {
      "n": "Elote Mediano",
@@ -17,11 +17,6 @@
      "r": 255
     },
     {
-     "n": "Coca cola",
-     "q": 3,
-     "r": 90
-    },
-    {
      "n": "Smoothie Limon/Fresa",
      "q": 1,
      "r": 70
@@ -30,6 +25,11 @@
      "n": "Smoothie Mangonada",
      "q": 1,
      "r": 70
+    },
+    {
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
     }
    ]
   },
