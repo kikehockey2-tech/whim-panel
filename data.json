@@ -1,18 +1,7 @@
 {
- "generated_at": "2026-11-08T01:59:24.853363+00:00",
- "today_local": "2026-11-07",
+ "generated_at": "2026-11-08T08:49:19.526102+00:00",
+ "today_local": "2026-11-08",
  "dailySales": {
-  "2026-09-22": {
-   "kind": "local",
-   "total": 130,
-   "items": [
-    {
-     "n": "Elote Mediano",
-     "q": 2,
-     "r": 130
-    }
-   ]
-  },
   "2026-09-23": {
    "kind": "local",
    "total": 840,
@@ -1362,12 +1351,12 @@
  },
  "todaySales": {},
  "trend": [
-  22870,
   1055,
   1035,
   1290,
   1345,
   275,
+  0,
   0
  ],
  "trendTags": [
@@ -1376,7 +1365,7 @@
   null,
   null,
   null,
-  null,
+  "cerrado",
   "cerrado"
  ],
  "weeklySales": {
