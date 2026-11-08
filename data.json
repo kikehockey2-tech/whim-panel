@@ -1,16 +1,11 @@
 {
- "generated_at": "2026-11-08T15:43:14.123721+00:00",
+ "generated_at": "2026-11-08T19:58:22.809512+00:00",
  "today_local": "2026-11-08",
  "dailySales": {
   "2026-09-23": {
    "kind": "local",
-   "total": 840,
+   "total": 580,
    "items": [
-    {
-     "n": "Smoothie Mangonada",
-     "q": 3,
-     "r": 210
-    },
     {
      "n": "Whimix Elote Bowl",
      "q": 2,
@@ -18,13 +13,8 @@
     },
     {
      "n": "Agua Natural",
-     "q": 3,
-     "r": 95
-    },
-    {
-     "n": "Coca cola",
-     "q": 3,
-     "r": 90
+     "q": 2,
+     "r": 75
     },
     {
      "n": "Elote Grande",
@@ -37,7 +27,7 @@
      "r": 70
     },
     {
-     "n": "Smoothie Limon/Fresa",
+     "n": "Smoothie Mangonada",
      "q": 1,
      "r": 70
     },
@@ -45,6 +35,11 @@
      "n": "Elote Mediano",
      "q": 1,
      "r": 65
+    },
+    {
+     "n": "Coca cola",
+     "q": 2,
+     "r": 60
     }
    ]
   },
