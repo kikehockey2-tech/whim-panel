@@ -11,6 +11,7 @@ Monterrey no tiene horario de verano: siempre es UTC-6, todo el año.
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 import urllib.parse
 from datetime import datetime, timedelta, timezone
@@ -18,7 +19,10 @@ from datetime import datetime, timedelta, timezone
 API_BASE = "https://api.loyverse.com/v1.0"
 MTY_OFFSET = timedelta(hours=6)  # Monterrey = UTC-6 todo el año, sin horario de verano
 MERCADITO_THRESHOLD = 2500  # ventas de un día por encima de esto = día de mercadito/bazar
-HISTORY_DAYS = 45  # cuántos días hacia atrás jalar (cubre el historial + 4 semanas para promedios)
+HISTORY_DAYS = 45  # ventana preferida (historial + 4 semanas para promedios)
+# Sin el add-on "Unlimited sales history", Loyverse responde 402 si created_at_min
+# pide recibos de hace más de 31 días. 30 días cubre el promedio semanal y deja margen.
+FREE_HISTORY_DAYS = 30
 
 # Nombre de producto en Loyverse -> id interno que usa el panel (products[] en index.html).
 # OJO: si agregas o renombras un producto en el panel, actualiza este mapa también.
@@ -56,13 +60,27 @@ NAME_TO_ID = {
 }
 
 
+class LoyverseHTTPError(Exception):
+    def __init__(self, code, path, body):
+        self.code = code
+        self.path = path
+        self.body = body
+        super().__init__(f"Loyverse API {code} {path}: {body[:500]}")
+
+
 def api_get(path, token, params=None):
     url = f"{API_BASE}{path}"
     if params:
         url += "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raw = e.read().decode("utf-8", errors="replace").strip()
+        if token and token in raw:
+            raw = raw.replace(token, "[redacted]")
+        raise LoyverseHTTPError(e.code, path, raw) from None
 
 
 def fetch_all_receipts(token, since_utc, until_utc):
@@ -82,6 +100,49 @@ def fetch_all_receipts(token, since_utc, until_utc):
         if not cursor:
             break
     return receipts
+
+
+def fetch_receipts(token, now_utc):
+    """Prefiere HISTORY_DAYS. Si Loyverse responde 402 (historial >31 días), usa 30."""
+    windows = [HISTORY_DAYS + 1, FREE_HISTORY_DAYS]
+    last_error = None
+    for index, days in enumerate(windows):
+        since_utc = now_utc - timedelta(days=days)
+        try:
+            receipts = fetch_all_receipts(token, since_utc, now_utc)
+        except LoyverseHTTPError as e:
+            last_error = e
+            if e.code == 402 and index < len(windows) - 1:
+                print(
+                    "Aviso: Loyverse HTTP 402 en la ventana de "
+                    f"{days} días ({e.body[:300] or 'sin cuerpo'}). "
+                    f"Reintento con {windows[-1]} días.",
+                    file=sys.stderr,
+                )
+                continue
+            print(
+                f"Error de Loyverse HTTP {e.code} en {e.path}: {e.body[:500] or 'sin cuerpo'}",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        if index > 0:
+            print(
+                f"Aviso: se usaron los últimos {days} días porque el historial largo no está disponible.",
+                file=sys.stderr,
+            )
+        return receipts, since_utc
+    print(f"Error: no se pudieron obtener recibos: {last_error}", file=sys.stderr)
+    sys.exit(1)
+
+
+def load_previous_daily_sales():
+    try:
+        with open("data.json", encoding="utf-8") as f:
+            prev = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+    sales = prev.get("dailySales")
+    return sales if isinstance(sales, dict) else {}
 
 
 def fetch_item_costs(token):
@@ -120,9 +181,9 @@ def main():
 
     now_utc = datetime.now(timezone.utc)
     today_local = (now_utc - MTY_OFFSET).date()
-    since_utc = now_utc - timedelta(days=HISTORY_DAYS + 1)
 
-    receipts = fetch_all_receipts(token, since_utc, now_utc)
+    receipts, since_utc = fetch_receipts(token, now_utc)
+    previous_daily = load_previous_daily_sales()
 
     # local_date -> {"total": float, "items": {item_name: {"q":.., "r":..}}}
     by_day = {}
@@ -158,6 +219,27 @@ def main():
                 for name, v in items_sorted
             ],
         }
+
+    # Días anteriores a la ventana consultada se conservan: un 402 obliga a pedir
+    # solo ~30 días, y reemplazar data.json completo borraría los meses ya jalados.
+    cutoff_local = ((since_utc - MTY_OFFSET) - timedelta(days=1)).date().isoformat()
+    if not receipts:
+        recent = [d for d in previous_daily if d >= cutoff_local]
+        if recent:
+            print(
+                "Error: Loyverse devolvió 0 recibos, pero data.json tiene "
+                f"{len(recent)} días desde {min(recent)}. No se publica un archivo vacío.",
+                file=sys.stderr,
+            )
+            sys.exit(2)
+    preserved = 0
+    for date, day in previous_daily.items():
+        if date < cutoff_local and date not in daily_sales:
+            daily_sales[date] = day
+            preserved += 1
+    if preserved:
+        daily_sales = dict(sorted(daily_sales.items()))
+        print(f"Aviso: se conservaron {preserved} días anteriores a {cutoff_local}.", file=sys.stderr)
 
     # ---------- todaySales: {product_id: cantidad} de hoy (en vivo, puede ir a la mitad) ----------
     today_key = today_local.isoformat()
