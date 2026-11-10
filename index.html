@@ -855,9 +855,11 @@
   // Recetas: solo se meten aquí las cantidades que ya confirmaste. Elote Grande/
   // Mediano ya tienen su elote_desgranado (calculado por volumen de vaso, 85%
   // grano). Whimix Elote Bowl usa la misma cantidad de elote que el mediano
-  // (confirmado 8-sep). Lo pendiente (papas de los bowls, fruit bowl, nieves,
-  // otros frappés) se deja sin receta a propósito — así no se descuenta
-  // inventario con un número inventado.
+  // (confirmado 8-sep). Cuchara desechable: 1 por unidad en elotes, bowls
+  // (whimix_elote, whimix_fruit, whimix_bowl, bowl_jicama) y nieves
+  // (nieve_grande, nieve_mediana) — regla 18-sep. Lo pendiente (papas de los
+  // bowls, resto de fruit bowl, volumen de nieve, otros frappés) se deja sin
+  // receta a propósito — así no se descuenta inventario con un número inventado.
   const CAPITA_KG = 0.02;      // 1 "capita" de mayonesa/crema ≈ 20g (estimado, confírmalo)
   const CUCHARADA_KG = 0.015;  // 1 cucharada de queso ≈ 15g (estimado, confírmalo)
   const VASO_HIELO_KG = 0.3;   // "1 vaso de hielo" ≈ 300g (estimado, confírmalo)
@@ -867,8 +869,12 @@
     // mismas cantidades de mayo/crema/queso que el elote; elote = mismo que mediano (8-sep); falta papa
     // + fruta, chamoy, gomitas y miguelito de encima (8-sep) — cantidades
     // estimadas como topping, no como porción principal; confírmalas.
-    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, fruta_mixta:.06, chamoy:.01, gomitas:.02, miguelito:.005}, // 209g = misma cantidad que elote mediano
-    whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG},
+    whimix_elote: {elote_desgranado:0.209, mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, fruta_mixta:.06, chamoy:.01, gomitas:.02, miguelito:.005, cuchara:1}, // 209g = misma cantidad que elote mediano
+    whimix_fruit: {cuchara:1},
+    whimix_bowl: {mayonesa:CAPITA_KG, crema:CAPITA_KG, queso_rallado:CUCHARADA_KG, queso_amarillo:CUCHARADA_KG, cuchara:1},
+    bowl_jicama: {cuchara:1},
+    nieve_grande: {cuchara:1},
+    nieve_mediana: {cuchara:1},
     smoothie_cocoa: {hielo:VASO_HIELO_KG, platano:2.5, vasos:1, tapas:1, popotes:1},
     smoothie_mangonada: {hielo:VASO_HIELO_KG, fruta_mango:.15, azucar:.02, chamoy:.01, vasos:1, tapas:1, popotes:1},
     smoothie_limonfresa: {hielo:VASO_HIELO_KG, fruta_fresa:.12, limon:.5, azucar:.02, vasos:1, tapas:1, popotes:1},
@@ -1310,9 +1316,10 @@
   // Loyverse día por día (no el promedio semanal — el consumo real de cada
   // día). El número que dicta Enrique (ing.stock) nunca se toca solo; esto
   // solo calcula "cuánto debería quedar hoy" a partir de ese número. Un
-  // insumo sin receta completa (Whimix Elote Bowl, fruit bowl, nieves, otros
-  // frappés) simplemente no tiene por dónde descontarse y se queda como el
-  // último conteo, igual que antes.
+  // insumo sin receta completa (papas de bowls, resto de fruit bowl, volumen
+  // de nieve, otros frappés) simplemente no tiene por dónde descontarse y se
+  // queda como el último conteo. Las cucharas sí se descuentan: 1 por elote,
+  // bowl y nieve (regla 18-sep).
   const STOCK_BASELINE = "2026-09-07"; // fecha del conteo físico más reciente — se hizo antes de abrir, así que las ventas de ese mismo día también se descuentan
   function realStockNow(ing){
     let consumed = 0;
