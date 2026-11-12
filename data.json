@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T10:02:49.637389+00:00",
+ "generated_at": "2026-11-12T18:16:47.339099+00:00",
  "today_local": "2026-11-12",
  "dailySales": {
   "2026-09-26": {
@@ -1282,9 +1282,28 @@
      "r": 85
     }
    ]
+  },
+  "2026-11-12": {
+   "kind": "local",
+   "total": 50,
+   "items": [
+    {
+     "n": "Coca cola",
+     "q": 1,
+     "r": 30
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "coca_cola": 1,
+  "agua_natural": 1
+ },
  "trend": [
   275,
   0,
@@ -1292,7 +1311,7 @@
   685,
   465,
   505,
-  0
+  50
  ],
  "trendTags": [
   null,
