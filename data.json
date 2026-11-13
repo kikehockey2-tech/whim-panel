@@ -1,89 +1,7 @@
 {
- "generated_at": "2026-11-13T03:37:26.578592+00:00",
- "today_local": "2026-11-12",
+ "generated_at": "2026-11-13T11:33:49.157083+00:00",
+ "today_local": "2026-11-13",
  "dailySales": {
-  "2026-09-26": {
-   "kind": "mercadito",
-   "total": 22000,
-   "items": [
-    {
-     "n": "Whimix Bowl M",
-     "q": 86,
-     "r": 7740
-    },
-    {
-     "n": "Suerito M",
-     "q": 54,
-     "r": 5400
-    },
-    {
-     "n": "Smoothie Mangonada M",
-     "q": 46,
-     "r": 4140
-    },
-    {
-     "n": "Elote Mediano M",
-     "q": 32,
-     "r": 2240
-    },
-    {
-     "n": "Elote Grande M",
-     "q": 18,
-     "r": 1440
-    },
-    {
-     "n": "Smoothie Fresa M",
-     "q": 9,
-     "r": 810
-    },
-    {
-     "n": "Whimix Bowl",
-     "q": 2,
-     "r": 140
-    },
-    {
-     "n": "Smoothie Mangonada",
-     "q": 1,
-     "r": 90
-    }
-   ]
-  },
-  "2026-09-27": {
-   "kind": "mercadito",
-   "total": 27970,
-   "items": [
-    {
-     "n": "Whimix Bowl M",
-     "q": 122,
-     "r": 10980
-    },
-    {
-     "n": "Suerito M",
-     "q": 61,
-     "r": 6100
-    },
-    {
-     "n": "Elote Mediano M",
-     "q": 61,
-     "r": 4270
-    },
-    {
-     "n": "Smoothie Mangonada M",
-     "q": 38,
-     "r": 3420
-    },
-    {
-     "n": "Elote Grande M",
-     "q": 31,
-     "r": 2480
-    },
-    {
-     "n": "Smoothie Fresa M",
-     "q": 8,
-     "r": 720
-    }
-   ]
-  },
   "2026-09-28": {
    "kind": "local",
    "total": 230,
@@ -1325,44 +1243,36 @@
    ]
   }
  },
- "todaySales": {
-  "elote_grande": 3,
-  "whimix_elote": 6,
-  "coca_cola": 2,
-  "elote_mediano": 1,
-  "agua_natural": 3,
-  "smoothie_mangonada": 1,
-  "smoothie_limonfresa": 1
- },
+ "todaySales": {},
  "trend": [
-  275,
   0,
   0,
   685,
   465,
   505,
-  1045
+  1045,
+  0
  ],
  "trendTags": [
+  "cerrado",
+  "cerrado",
   null,
-  "cerrado",
-  "cerrado",
   null,
   null,
   null,
   null
  ],
  "weeklySales": {
-  "nieve_mediana": 6.0,
-  "elote_grande": 7.8,
-  "elote_mediano": 11.5,
-  "whimix_elote": 15.2,
-  "coca_cola": 6.5,
-  "agua_natural": 7.8,
-  "whimix_fruit": 2.0,
+  "whimix_elote": 15.5,
+  "elote_grande": 8.5,
+  "smoothie_mangonada": 3.2,
   "smoothie_limonfresa": 0.8,
-  "smoothie_mangonada": 3.0,
-  "nieve_grande": 1.2
+  "elote_mediano": 11.0,
+  "coca_cola": 7.0,
+  "agua_natural": 8.2,
+  "nieve_mediana": 5.2,
+  "whimix_fruit": 1.5,
+  "nieve_grande": 1.0
  },
  "productCost": {
   "nieve_grande": 0.0,
