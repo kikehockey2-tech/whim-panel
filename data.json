@@ -1,38 +1,18 @@
 {
- "generated_at": "2026-11-14T18:51:39.998267+00:00",
+ "generated_at": "2026-11-14T22:50:59.395568+00:00",
  "today_local": "2026-11-14",
  "dailySales": {
   "2026-09-29": {
    "kind": "local",
-   "total": 950,
+   "total": 275,
    "items": [
     {
-     "n": "Smoothie Mangonada",
-     "q": 5,
-     "r": 350
+     "n": "Elote Grande",
+     "q": 1,
+     "r": 70
     },
     {
      "n": "Smoothie Limon/Fresa",
-     "q": 2,
-     "r": 140
-    },
-    {
-     "n": "Elote Mediano",
-     "q": 2,
-     "r": 130
-    },
-    {
-     "n": "Smoothie Piñacoco",
-     "q": 1,
-     "r": 75
-    },
-    {
-     "n": "Frappe Chai",
-     "q": 1,
-     "r": 75
-    },
-    {
-     "n": "Elote Grande",
      "q": 1,
      "r": 70
     },
@@ -42,9 +22,9 @@
      "r": 70
     },
     {
-     "n": "Agua Natural",
-     "q": 2,
-     "r": 40
+     "n": "Elote Mediano",
+     "q": 1,
+     "r": 65
     }
    ]
   },
