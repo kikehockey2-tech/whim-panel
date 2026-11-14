@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-14T13:42:39.958572+00:00",
+ "generated_at": "2026-11-14T18:51:39.998267+00:00",
  "today_local": "2026-11-14",
  "dailySales": {
   "2026-09-29": {
    "kind": "local",
-   "total": 1130,
+   "total": 950,
    "items": [
     {
      "n": "Smoothie Mangonada",
@@ -22,22 +22,12 @@
      "r": 130
     },
     {
-     "n": "Whimix Elote Bowl",
-     "q": 1,
-     "r": 85
-    },
-    {
      "n": "Smoothie Piñacoco",
      "q": 1,
      "r": 75
     },
     {
      "n": "Frappe Chai",
-     "q": 1,
-     "r": 75
-    },
-    {
-     "n": "Frappe Vainilla",
      "q": 1,
      "r": 75
     },
@@ -53,8 +43,8 @@
     },
     {
      "n": "Agua Natural",
-     "q": 3,
-     "r": 60
+     "q": 2,
+     "r": 40
     }
    ]
   },
