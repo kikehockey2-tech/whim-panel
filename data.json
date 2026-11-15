@@ -1,23 +1,7 @@
 {
- "generated_at": "2026-11-15T02:19:42.364726+00:00",
- "today_local": "2026-11-14",
+ "generated_at": "2026-11-15T09:42:20.211407+00:00",
+ "today_local": "2026-11-15",
  "dailySales": {
-  "2026-09-29": {
-   "kind": "local",
-   "total": 140,
-   "items": [
-    {
-     "n": "Elote Grande",
-     "q": 1,
-     "r": 70
-    },
-    {
-     "n": "Smoothie Limon/Fresa",
-     "q": 1,
-     "r": 70
-    }
-   ]
-  },
   "2026-09-30": {
    "kind": "local",
    "total": 975,
@@ -1210,21 +1194,21 @@
  },
  "todaySales": {},
  "trend": [
-  0,
   685,
   465,
   505,
   1045,
   1150,
+  0,
   0
  ],
  "trendTags": [
+  null,
+  null,
+  null,
+  null,
+  null,
   "cerrado",
-  null,
-  null,
-  null,
-  null,
-  null,
   "cerrado"
  ],
  "weeklySales": {
