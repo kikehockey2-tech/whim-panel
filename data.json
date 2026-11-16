@@ -1,15 +1,15 @@
 {
- "generated_at": "2026-11-16T08:14:09.093647+00:00",
+ "generated_at": "2026-11-16T18:36:47.036998+00:00",
  "today_local": "2026-11-16",
  "dailySales": {
   "2026-10-01": {
    "kind": "local",
-   "total": 1040,
+   "total": 850,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 4,
-     "r": 340
+     "q": 2,
+     "r": 170
     },
     {
      "n": "Smoothie Mangonada",
@@ -45,11 +45,6 @@
      "n": "Bowl Jicam dh",
      "q": 1,
      "r": 65
-    },
-    {
-     "n": "Agua Natural",
-     "q": 1,
-     "r": 20
     }
    ]
   },
