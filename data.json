@@ -1,25 +1,15 @@
 {
- "generated_at": "2026-11-15T21:17:40.501346+00:00",
+ "generated_at": "2026-11-16T01:15:51.540608+00:00",
  "today_local": "2026-11-15",
  "dailySales": {
   "2026-09-30": {
    "kind": "local",
-   "total": 520,
+   "total": 130,
    "items": [
     {
      "n": "Elote Mediano",
-     "q": 4,
-     "r": 260
-    },
-    {
-     "n": "Whimix Elote Bowl",
      "q": 2,
-     "r": 170
-    },
-    {
-     "n": "Coca cola",
-     "q": 3,
-     "r": 90
+     "r": 130
     }
    ]
   },
