@@ -1,18 +1,7 @@
 {
- "generated_at": "2026-11-16T01:15:51.540608+00:00",
- "today_local": "2026-11-15",
+ "generated_at": "2026-11-16T08:14:09.093647+00:00",
+ "today_local": "2026-11-16",
  "dailySales": {
-  "2026-09-30": {
-   "kind": "local",
-   "total": 130,
-   "items": [
-    {
-     "n": "Elote Mediano",
-     "q": 2,
-     "r": 130
-    }
-   ]
-  },
   "2026-10-01": {
    "kind": "local",
    "total": 1040,
@@ -1154,11 +1143,11 @@
  },
  "todaySales": {},
  "trend": [
-  685,
   465,
   505,
   1045,
   1150,
+  0,
   0,
   0
  ],
@@ -1167,9 +1156,9 @@
   null,
   null,
   null,
-  null,
   "cerrado",
-  "cerrado"
+  "cerrado",
+  null
  ],
  "weeklySales": {
   "whimix_elote": 17.2,
