@@ -1,53 +1,7 @@
 {
- "generated_at": "2026-11-16T18:36:47.036998+00:00",
+ "generated_at": "2026-11-17T02:05:50.273030+00:00",
  "today_local": "2026-11-16",
  "dailySales": {
-  "2026-10-01": {
-   "kind": "local",
-   "total": 850,
-   "items": [
-    {
-     "n": "Whimix Elote Bowl",
-     "q": 2,
-     "r": 170
-    },
-    {
-     "n": "Smoothie Mangonada",
-     "q": 2,
-     "r": 145
-    },
-    {
-     "n": "Elote Grande",
-     "q": 2,
-     "r": 140
-    },
-    {
-     "n": "Coca cola",
-     "q": 4,
-     "r": 120
-    },
-    {
-     "n": "Smoothie Piñacoco",
-     "q": 1,
-     "r": 75
-    },
-    {
-     "n": "Whimix Fruit Bowl",
-     "q": 1,
-     "r": 70
-    },
-    {
-     "n": "Elote Mediano",
-     "q": 1,
-     "r": 65
-    },
-    {
-     "n": "Bowl Jicam dh",
-     "q": 1,
-     "r": 65
-    }
-   ]
-  },
   "2026-10-05": {
    "kind": "local",
    "total": 500,
