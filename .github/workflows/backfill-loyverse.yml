@@ -1,0 +1,71 @@
+name: Backend histórico Loyverse (diario)
+
+on:
+  schedule:
+    # 09:00 UTC = 03:00 America/Monterrey (UTC-6, sin horario de verano).
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "1 = rebajar todo el historial de recibos"
+        required: false
+        default: "0"
+        type: choice
+        options:
+          - "0"
+          - "1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: loyverse-backend
+  cancel-in-progress: false
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bajar Loyverse a data/whim.db
+        env:
+          LOYVERSE_TOKEN: ${{ secrets.LOYVERSE_TOKEN }}
+          FULL: ${{ github.event.inputs.full || '0' }}
+        run: python3 scripts/backfill_loyverse.py
+
+      - name: Subir data/whim.db
+        run: |
+          git config user.name "whim-sync-bot"
+          git config user.email "actions@github.com"
+          git add -- data/whim.db
+          if git diff --cached --quiet; then
+            echo "Sin cambios en data/whim.db"
+            exit 0
+          fi
+          git commit -m "Backend Loyverse $(date -u +%F)"
+          branch="${GITHUB_REF_NAME}"
+          for i in 1 2 3; do
+            if git pull --rebase origin "$branch"; then
+              if git push origin "HEAD:${branch}"; then
+                exit 0
+              fi
+            elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+              git checkout --theirs -- data/whim.db
+              git add -- data/whim.db
+              if GIT_EDITOR=true git rebase --continue && git push origin "HEAD:${branch}"; then
+                exit 0
+              fi
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+          echo "No se pudo subir data/whim.db" >&2
+          exit 1
