@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T23:22:34.495556+00:00",
+ "generated_at": "2026-11-20T04:08:06.437805+00:00",
  "today_local": "2026-11-19",
  "dailySales": {
   "2026-10-05": {
@@ -1148,24 +1148,30 @@
   },
   "2026-11-19": {
    "kind": "local",
-   "total": 320,
+   "total": 775,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 3,
-     "r": 255
+     "q": 6,
+     "r": 510
     },
     {
      "n": "Elote Mediano",
+     "q": 3,
+     "r": 195
+    },
+    {
+     "n": "Elote Grande",
      "q": 1,
-     "r": 65
+     "r": 70
     }
    ]
   }
  },
  "todaySales": {
-  "whimix_elote": 3,
-  "elote_mediano": 1
+  "elote_mediano": 3,
+  "whimix_elote": 6,
+  "elote_grande": 1
  },
  "trend": [
   1150,
@@ -1174,7 +1180,7 @@
   0,
   1045,
   850,
-  320
+  775
  ],
  "trendTags": [
   null,
