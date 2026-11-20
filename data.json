@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-20T12:51:03.821810+00:00",
+ "generated_at": "2026-11-20T20:52:59.461306+00:00",
  "today_local": "2026-11-20",
  "dailySales": {
   "2026-10-05": {
@@ -1166,9 +1166,32 @@
      "r": 70
     }
    ]
+  },
+  "2026-11-20": {
+   "kind": "local",
+   "total": 235,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 1,
+     "r": 85
+    },
+    {
+     "n": "Frappe Mocha",
+     "q": 1,
+     "r": 75
+    },
+    {
+     "n": "Frappe Cafe",
+     "q": 1,
+     "r": 75
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "whimix_elote": 1
+ },
  "trend": [
   0,
   0,
@@ -1176,7 +1199,7 @@
   1045,
   850,
   775,
-  0
+  235
  ],
  "trendTags": [
   "cerrado",
