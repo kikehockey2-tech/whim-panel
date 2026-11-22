@@ -1,20 +1,15 @@
 {
- "generated_at": "2026-11-21T21:59:09.760666+00:00",
+ "generated_at": "2026-11-22T01:59:26.972784+00:00",
  "today_local": "2026-11-21",
  "dailySales": {
   "2026-10-06": {
    "kind": "local",
-   "total": 665,
+   "total": 225,
    "items": [
     {
      "n": "Whimix Elote Bowl",
-     "q": 3,
-     "r": 255
-    },
-    {
-     "n": "Elote Mediano",
-     "q": 3,
-     "r": 195
+     "q": 1,
+     "r": 85
     },
     {
      "n": "Smoothie Mangonada",
@@ -22,14 +17,9 @@
      "r": 75
     },
     {
-     "n": "Elote Grande",
+     "n": "Elote Mediano",
      "q": 1,
-     "r": 70
-    },
-    {
-     "n": "nieve grande",
-     "q": 1,
-     "r": 70
+     "r": 65
     }
    ]
   },
