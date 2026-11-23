@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-23T03:07:41.471008+00:00",
- "today_local": "2026-11-22",
+ "generated_at": "2026-11-23T12:29:37.588966+00:00",
+ "today_local": "2026-11-23",
  "dailySales": {
   "2026-10-08": {
    "kind": "local",
@@ -1108,11 +1108,11 @@
  },
  "todaySales": {},
  "trend": [
-  0,
   1045,
   850,
   775,
   840,
+  0,
   0,
   0
  ],
@@ -1121,9 +1121,9 @@
   null,
   null,
   null,
-  null,
   "cerrado",
-  "cerrado"
+  "cerrado",
+  null
  ],
  "weeklySales": {
   "whimix_elote": 18.9,
