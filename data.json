@@ -1,43 +1,7 @@
 {
- "generated_at": "2026-11-22T22:39:36.699642+00:00",
+ "generated_at": "2026-11-23T03:07:41.471008+00:00",
  "today_local": "2026-11-22",
  "dailySales": {
-  "2026-10-07": {
-   "kind": "local",
-   "total": 575,
-   "items": [
-    {
-     "n": "Smoothie Limon/Fresa",
-     "q": 2,
-     "r": 140
-    },
-    {
-     "n": "Elote Grande",
-     "q": 2,
-     "r": 140
-    },
-    {
-     "n": "Elote Mediano",
-     "q": 2,
-     "r": 130
-    },
-    {
-     "n": "Whimix Elote Bowl",
-     "q": 1,
-     "r": 85
-    },
-    {
-     "n": "Nieve mediana",
-     "q": 1,
-     "r": 50
-    },
-    {
-     "n": "Coca cola",
-     "q": 1,
-     "r": 30
-    }
-   ]
-  },
   "2026-10-08": {
    "kind": "local",
    "total": 1425,
