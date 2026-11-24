@@ -1,28 +1,7 @@
 {
- "generated_at": "2026-11-24T00:15:09.900117+00:00",
- "today_local": "2026-11-23",
+ "generated_at": "2026-11-24T10:11:59.227033+00:00",
+ "today_local": "2026-11-24",
  "dailySales": {
-  "2026-10-08": {
-   "kind": "local",
-   "total": 595,
-   "items": [
-    {
-     "n": "Elote Mediano",
-     "q": 5,
-     "r": 325
-    },
-    {
-     "n": "Whimix Elote Bowl",
-     "q": 2,
-     "r": 170
-    },
-    {
-     "n": "Nieve mediana",
-     "q": 2,
-     "r": 100
-    }
-   ]
-  },
   "2026-10-09": {
    "kind": "local",
    "total": 1035,
@@ -1084,16 +1063,124 @@
      "r": 30
     }
    ]
+  },
+  "2026-11-21": {
+   "kind": "mercadito",
+   "total": 5620,
+   "items": [
+    {
+     "n": "Whimix Bowl M",
+     "q": 22,
+     "r": 2200
+    },
+    {
+     "n": "Elote Mediano M",
+     "q": 25,
+     "r": 1750
+    },
+    {
+     "n": "Elote Grande M",
+     "q": 16,
+     "r": 1280
+    },
+    {
+     "n": "Suerito M",
+     "q": 3,
+     "r": 300
+    },
+    {
+     "n": "Smoothie Fresa M",
+     "q": 1,
+     "r": 90
+    }
+   ]
+  },
+  "2026-11-22": {
+   "kind": "mercadito",
+   "total": 14020,
+   "items": [
+    {
+     "n": "Whimix Bowl M",
+     "q": 75,
+     "r": 7500
+    },
+    {
+     "n": "Elote Mediano M",
+     "q": 53,
+     "r": 3710
+    },
+    {
+     "n": "Elote Grande M",
+     "q": 19,
+     "r": 1520
+    },
+    {
+     "n": "Smoothie Mangonada M",
+     "q": 8,
+     "r": 720
+    },
+    {
+     "n": "Suerito M",
+     "q": 3,
+     "r": 300
+    },
+    {
+     "n": "Smoothie Fresa M",
+     "q": 3,
+     "r": 270
+    }
+   ]
+  },
+  "2026-11-23": {
+   "kind": "local",
+   "total": 1145,
+   "items": [
+    {
+     "n": "Elote Mediano",
+     "q": 6,
+     "r": 390
+    },
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 3,
+     "r": 255
+    },
+    {
+     "n": "Elote Grande",
+     "q": 3,
+     "r": 210
+    },
+    {
+     "n": "Whimix Fruit Bowl",
+     "q": 2,
+     "r": 140
+    },
+    {
+     "n": "Smoothie Mangonada",
+     "q": 1,
+     "r": 70
+    },
+    {
+     "n": "Nieve mediana",
+     "q": 1,
+     "r": 50
+    },
+    {
+     "n": "Coca cola",
+     "q": 1,
+     "r": 30
+    }
+   ]
   }
  },
  "todaySales": {},
  "trend": [
-  1045,
   850,
   775,
   840,
-  0,
-  0,
+  5620,
+  14020,
+  1145,
   0
  ],
  "trendTags": [
@@ -1101,19 +1188,19 @@
   null,
   null,
   null,
-  "cerrado",
-  "cerrado",
+  null,
+  null,
   null
  ],
  "weeklySales": {
-  "whimix_elote": 18.9,
-  "elote_mediano": 11.1,
+  "elote_mediano": 11.8,
+  "whimix_elote": 19.2,
   "elote_grande": 8.9,
-  "whimix_fruit": 1.1,
+  "whimix_fruit": 1.6,
+  "smoothie_mangonada": 3.4,
   "nieve_mediana": 5.0,
-  "coca_cola": 7.4,
-  "agua_natural": 8.7,
-  "smoothie_mangonada": 3.2,
+  "coca_cola": 7.6,
+  "agua_natural": 7.6,
   "smoothie_limonfresa": 0.8,
   "nieve_grande": 1.1
  },
