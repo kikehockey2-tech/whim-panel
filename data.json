@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-27T05:02:58.138631+00:00",
- "today_local": "2026-11-26",
+ "generated_at": "2026-11-27T15:01:28.665816+00:00",
+ "today_local": "2026-11-27",
  "dailySales": {
   "2026-10-12": {
    "kind": "local",
@@ -1225,21 +1225,15 @@
    ]
   }
  },
- "todaySales": {
-  "whimix_elote": 6,
-  "elote_mediano": 3,
-  "coca_cola": 2,
-  "whimix_fruit": 1,
-  "elote_grande": 1
- },
+ "todaySales": {},
  "trend": [
-  840,
   5620,
   14020,
   1145,
   455,
   755,
-  905
+  905,
+  0
  ],
  "trendTags": [
   null,
@@ -1251,16 +1245,16 @@
   null
  ],
  "weeklySales": {
-  "whimix_elote": 18.2,
-  "elote_grande": 9.2,
-  "elote_mediano": 11.3,
-  "coca_cola": 8.4,
-  "whimix_fruit": 2.1,
+  "whimix_elote": 18.9,
+  "elote_mediano": 11.6,
+  "whimix_fruit": 2.4,
+  "elote_grande": 9.5,
+  "coca_cola": 8.7,
   "nieve_mediana": 5.3,
-  "agua_natural": 6.8,
-  "smoothie_mangonada": 2.6,
+  "agua_natural": 6.3,
+  "smoothie_mangonada": 2.1,
   "smoothie_limonfresa": 0.8,
-  "nieve_grande": 0.5
+  "nieve_grande": 0.3
  },
  "productCost": {
   "nieve_grande": 0.0,
