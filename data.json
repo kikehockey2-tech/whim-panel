@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-27T15:01:28.665816+00:00",
+ "generated_at": "2026-11-27T23:26:07.739424+00:00",
  "today_local": "2026-11-27",
  "dailySales": {
   "2026-10-12": {
    "kind": "local",
-   "total": 995,
+   "total": 735,
    "items": [
     {
      "n": "Whimix Elote Bowl",
@@ -13,16 +13,11 @@
     },
     {
      "n": "Smoothie Mangonada",
-     "q": 3,
-     "r": 210
-    },
-    {
-     "n": "Elote Grande",
      "q": 1,
      "r": 70
     },
     {
-     "n": "nieve grande",
+     "n": "Elote Grande",
      "q": 1,
      "r": 70
     },
@@ -33,13 +28,8 @@
     },
     {
      "n": "Agua Natural",
-     "q": 2,
-     "r": 40
-    },
-    {
-     "n": "Coca cola",
      "q": 1,
-     "r": 30
+     "r": 20
     }
    ]
   },
@@ -1223,9 +1213,40 @@
      "r": 60
     }
    ]
+  },
+  "2026-11-27": {
+   "kind": "local",
+   "total": 725,
+   "items": [
+    {
+     "n": "Whimix Elote Bowl",
+     "q": 5,
+     "r": 425
+    },
+    {
+     "n": "Nieve mediana",
+     "q": 3,
+     "r": 150
+    },
+    {
+     "n": "Elote Mediano",
+     "q": 2,
+     "r": 130
+    },
+    {
+     "n": "Agua Natural",
+     "q": 1,
+     "r": 20
+    }
+   ]
   }
  },
- "todaySales": {},
+ "todaySales": {
+  "elote_mediano": 2,
+  "whimix_elote": 5,
+  "nieve_mediana": 3,
+  "agua_natural": 1
+ },
  "trend": [
   5620,
   14020,
@@ -1233,7 +1254,7 @@
   455,
   755,
   905,
-  0
+  725
  ],
  "trendTags": [
   null,
